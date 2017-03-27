@@ -5,6 +5,9 @@ let { height, width } = Dimensions.get('window');
 // let font = 'Heiti SC';
 let font = 'Chalkduster';
 
+//TODO
+let gameUserWidth = 70;
+
 let fontSize = 30;
 
 export const styles = StyleSheet.create({
@@ -74,8 +77,8 @@ export const styles = StyleSheet.create({
     },
     gameUser: {
         position: 'absolute',
-        width: 50,
-        height: 50,
+        width: gameUserWidth,
+        height: gameUserWidth,
         // backgroundColor: 'green',
         // right: 0,
         // left: 0,
@@ -84,6 +87,12 @@ export const styles = StyleSheet.create({
         // justifyContent: 'center',
         // alignItems: 'center',
         zIndex: 2
+    },
+    gameUserTouchable: {
+        backgroundColor: 'transparent',
+        // backgroundColor: 'green',
+        width: gameUserWidth,
+        height: gameUserWidth,
     },
     userMenu: {
         position: 'absolute',

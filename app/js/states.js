@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
-import {AppRegistry, View, Text, Image, StyleSheet, MapView} from 'react-native';
+import {View, Text, Image, MapView, Alert, TouchableOpacity} from 'react-native';
 
 import {styles} from './styles';
 import {texts} from './texts'
 import {geo} from './geo'
+
+import {sound} from './sound';
 
 export class MainMap extends Component {
     render() {
@@ -26,7 +28,7 @@ export class MainMenu extends Component {
                 </Text>
                 <Image
                     style={styles.selectAnimal}
-                    source={require('./images/goos11e2.png')}
+                    source={require('./../images/goos11e2.png')}
                 />
                 <Text style={styles.select}>
                     {texts.ok}
@@ -52,10 +54,14 @@ export class GameMenu extends Component {
     render() {
         return (
             <View style={styles.mainMenu}>
-                <Image
-                    style={styles.gameUser}
-                    source={require('./images/goos11e2.png')}
-                />
+                <TouchableOpacity
+                    onPress={onButtonPress}
+                    style={styles.gameUserTouchable}>
+                    <Image
+                        style={styles.gameUser}
+                        source={require('./../images/goos11e2.png')}
+                    />
+                </TouchableOpacity>
                 <UserMenu/>
             </View>
         );
@@ -69,9 +75,6 @@ export class UserMenu extends Component {
                 <Text style={styles.userMenuText}>
                     {texts.items}
                 </Text>
-                {/*<Text style={styles.userMenuText}>*/}
-                {/*{texts.ok}*/}
-                {/*</Text>*/}
                 <Text style={styles.userMenuText}>
                     {texts.menu}
                 </Text>
@@ -79,3 +82,18 @@ export class UserMenu extends Component {
         );
     }
 }
+
+const onButtonPress = () => {
+
+    // Play the sound with an onEnd callback
+    sound.play((success) => {
+
+        if (success) {
+            // Alert.alert('success');
+            console.log('successfully finished playing');
+        } else {
+            // Alert.alert('error');
+            console.log('playback failed due to audio decoding errors');
+        }
+    });
+};

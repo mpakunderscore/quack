@@ -1,9 +1,9 @@
-import {MainMap, MainMenu, GameMap, GameMenu} from './app/states'
-
-import {styles} from './app/styles';
-
 import React, {Component} from 'react';
-import {AppRegistry, View, Text, Image, StyleSheet, MapView} from 'react-native';
+import {AppRegistry, View} from 'react-native';
+
+import {MainMap, MainMenu, GameMap, GameMenu} from './app/js/states'
+
+import {styles} from './app/js/styles';
 
 let mainMenu = false;
 
