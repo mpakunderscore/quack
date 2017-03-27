@@ -4,8 +4,10 @@ import {View, Text, Image, MapView, Alert, TouchableOpacity} from 'react-native'
 import {styles} from './styles';
 import {texts} from './texts'
 import {geo} from './geo'
-
 import {sound} from './sound';
+
+// import {socket} from './socket';
+import {sendSound} from './socket';
 
 export class MainMap extends Component {
     render() {
@@ -62,13 +64,13 @@ export class GameMenu extends Component {
                         source={require('./../images/goos11e2.png')}
                     />
                 </TouchableOpacity>
-                <UserMenu/>
+                <BottomMenu/>
             </View>
         );
     }
 }
 
-export class UserMenu extends Component {
+export class BottomMenu extends Component {
     render() {
         return (
             <View style={styles.userMenu}>
@@ -85,15 +87,17 @@ export class UserMenu extends Component {
 
 const onButtonPress = () => {
 
-    // Play the sound with an onEnd callback
-    sound.play((success) => {
+    sendSound();
 
-        if (success) {
+    // Play the sound with an onEnd callback
+    // sound.play((success) => {
+
+        // if (success) {
             // Alert.alert('success');
-            console.log('successfully finished playing');
-        } else {
+            // console.log('successfully finished playing');
+        // } else {
             // Alert.alert('error');
-            console.log('playback failed due to audio decoding errors');
-        }
-    });
+            // console.log('playback failed due to audio decoding errors');
+        // }
+    // });
 };

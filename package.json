@@ -4,12 +4,18 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "server": "nodemon server"
   },
   "dependencies": {
+    "express": "^4.15.2",
+    "nodemon": "^1.11.0",
     "react": "15.4.2",
     "react-native": "0.42.3",
-    "react-native-sound": "^0.9.1"
+    "react-native-socketio": "^0.3.0",
+    "react-native-sound": "^0.9.1",
+    "socket.io": "^1.7.3",
+    "socket.io-client": "^1.7.3"
   },
   "devDependencies": {
     "babel-jest": "19.0.0",
