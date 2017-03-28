@@ -1,21 +1,19 @@
 import React, {Component} from 'react';
-import {View, Text, Image, MapView, Alert, TouchableOpacity} from 'react-native';
+import {View, Text, Image, Alert, TouchableOpacity} from 'react-native';
+import MapView from 'react-native-maps';
 
-import {styles} from './styles';
-import {texts} from './texts'
-import {geo} from './geo'
-import {sound} from './sound';
+import {styles} from './utils/styles';
+import {texts} from './utils/texts'
+import {geo} from './utils/geo'
 
-// import {socket} from './socket';
-import {sendSound} from './socket';
+import {selfClick} from './actions';
 
 export class MainMap extends Component {
     render() {
         return (
             <MapView
-                style={styles.mainMap}
-                showsUserLocation={true}
-                region={geo.region}
+                style={styles.gameMap}
+                initialRegion={geo.region}
             />
         );
     }
@@ -45,8 +43,7 @@ export class GameMap extends Component {
         return (
             <MapView
                 style={styles.gameMap}
-                showsUserLocation={true}
-                region={geo.region}
+                initialRegion={geo.region}
             />
         );
     }
@@ -57,7 +54,7 @@ export class GameMenu extends Component {
         return (
             <View style={styles.mainMenu}>
                 <TouchableOpacity
-                    onPress={onButtonPress}
+                    onPress={selfClick}
                     style={styles.gameUserTouchable}>
                     <Image
                         style={styles.gameUser}
@@ -84,20 +81,3 @@ export class BottomMenu extends Component {
         );
     }
 }
-
-const onButtonPress = () => {
-
-    sendSound();
-
-    // Play the sound with an onEnd callback
-    // sound.play((success) => {
-
-        // if (success) {
-            // Alert.alert('success');
-            // console.log('successfully finished playing');
-        // } else {
-            // Alert.alert('error');
-            // console.log('playback failed due to audio decoding errors');
-        // }
-    // });
-};

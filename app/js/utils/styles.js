@@ -6,7 +6,7 @@ let { height, width } = Dimensions.get('window');
 let font = 'Chalkduster';
 
 //TODO
-let gameUserWidth = 70;
+let gameUserWidth = 80;
 
 let fontSize = 30;
 
