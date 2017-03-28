@@ -18,10 +18,16 @@ navigator.geolocation.getCurrentPosition(
         // this.setState({initialPosition});
 
         //TODO
-        // alert(JSON.stringify(position))
-        // geo.region.latitude = position.latitude;
-        // geo.region.longitude = position.latitude;
-    },
-    (error) => alert(JSON.stringify(error)),
-    {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+        // alert(JSON.stringify(position.coords));
+        geo.region.latitude = position.coords.latitude;
+        geo.region.longitude = position.coords.longitude;
+        // geo.region.latitudeDelta = position.coords.latitude;
+        // geo.region.longitudeDelta = position.coords.latitude;
+
+    }, (error) => {
+
+        // geo.region.latitude = "59.9547";
+        // geo.region.longitude = "30.3275";
+
+    }, {enableHighAccuracy: true, timeout: 1000, maximumAge: 1000}
 );

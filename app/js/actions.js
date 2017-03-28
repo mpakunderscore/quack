@@ -8,7 +8,7 @@ export const selfClick = () => {
     playSound();
 };
 
-function playSound() {
+export function playSound() {
 
     // Play the sound with an onEnd callback
     sound.play((success) => {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {View} from 'react-native';
+import {View, StatusBar} from 'react-native';
 import {MainMap, MainMenu, GameMap, GameMenu} from './js/states'
 import {styles} from './js/utils/styles';
 
@@ -11,7 +11,9 @@ export class Index extends Component {
         //TODO
         if (mainMenu)
             return (
-                <View style={styles.container}>
+                <View style={styles.container}
+                      hideNavBar={true}>
+                    {/*<StatusBar hidden={true} />*/}
                     <MainMap/>
                     <MainMenu/>
                 </View>
@@ -19,7 +21,9 @@ export class Index extends Component {
 
         else
             return (
-                <View style={styles.container}>
+                <View style={styles.container}
+                      hideNavBar={true}>
+                    {/*<StatusBar hidden={true} />*/}
                     <GameMap/>
                     <GameMenu/>
                 </View>

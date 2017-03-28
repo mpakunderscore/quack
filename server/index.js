@@ -25,8 +25,8 @@ websocket.on('connection', (socket) => {
 
 function receiveSound(socket, message) {
 
-    console.log('sound: ', message);
+    console.log('sound from : ' + socket.id);
 
-    socket.emit('sound', 'some sound from server');
-    socket.broadcast.emit('sound', 'some sound from server broadcast');
+    // socket.emit('sound', '');
+    socket.broadcast.emit('sound', '');
 }

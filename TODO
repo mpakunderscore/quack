@@ -1,5 +1,9 @@
-
-3. Починить геолокацию
 4. Обновлять геолокацию при движении
 5. Передавать кряк на все активные устройства
 6. Открывать игровой стейт после клика квак на первом
+
+На моем не ксусе не работает геолокация
+
+adb devices
+react-native run-android
+export PATH="/Users/pavelkuzmin/Library/Android/sdk/platform-tools":$PATH
