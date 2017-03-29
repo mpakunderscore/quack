@@ -3,7 +3,11 @@
 import {playSound} from './actions';
 import SocketIOClient from 'socket.io-client';
 
-let socket = SocketIOClient('http://192.168.1.47:3000');
+const ip = '92.61.69.168';
+
+const port = 3000;
+
+let socket = SocketIOClient('http://' + ip + ':' + port);
 
 export let sendSound = function () {
     socket.emit('sound', 'some sound');

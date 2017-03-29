@@ -1,20 +1,18 @@
 import React, {Component} from 'react';
 import {View, Text, Image, Alert, TouchableOpacity} from 'react-native';
-import MapView from 'react-native-maps';
+
+import {Map} from './utils/map';
 
 import {styles} from './utils/styles';
-import {texts} from './utils/texts'
-import {geo} from './utils/geo'
+import {texts} from './utils/texts';
+import {images} from './utils/images';
 
 import {selfClick} from './actions';
 
 export class MainMap extends Component {
     render() {
         return (
-            <MapView
-                style={styles.gameMap}
-                initialRegion={geo.region}
-            />
+            <Map/>
         );
     }
 }
@@ -28,7 +26,7 @@ export class MainMenu extends Component {
                 </Text>
                 <Image
                     style={styles.selectAnimal}
-                    source={require('./../images/goos11e2.png')}
+                    source={images.goose}
                 />
                 <Text style={styles.select}>
                     {texts.ok}
@@ -41,10 +39,7 @@ export class MainMenu extends Component {
 export class GameMap extends Component {
     render() {
         return (
-            <MapView
-                style={styles.gameMap}
-                initialRegion={geo.region}
-            />
+            <Map/>
         );
     }
 }
@@ -58,7 +53,7 @@ export class GameMenu extends Component {
                     style={styles.gameUserTouchable}>
                     <Image
                         style={styles.gameUser}
-                        source={require('./../images/goos11e2.png')}
+                        source={images.goose}
                     />
                 </TouchableOpacity>
                 <BottomMenu/>
