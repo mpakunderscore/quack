@@ -9,6 +9,10 @@ import {images} from './utils/images';
 
 import {selfClick} from './actions';
 
+export function placeUser(region) {
+    Map.placeUser(region)
+}
+
 export class MainMap extends Component {
     render() {
         return (

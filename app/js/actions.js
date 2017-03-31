@@ -1,5 +1,6 @@
-import {sendSound} from './socket';
 import {sound} from './utils/sound'
+
+import {sendSound} from './client';
 
 export const selfClick = () => {
 
@@ -22,4 +23,3 @@ export function playSound() {
         // }
     });
 }
-

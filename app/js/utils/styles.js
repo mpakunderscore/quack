@@ -5,8 +5,10 @@ let { height, width } = Dimensions.get('window');
 // let font = 'Heiti SC';
 let font = 'Chalkduster';
 
-//TODO
-let gameUserWidth = 80;
+//TODO %
+export let gameUserWidth = 80;
+
+export let gameUsersWidth = gameUserWidth;
 
 let fontSize = 30;
 
@@ -75,17 +77,11 @@ export const styles = StyleSheet.create({
         // opacity: 0.2,
         zIndex: 1
     },
+
     gameUser: {
         position: 'absolute',
         width: gameUserWidth,
         height: gameUserWidth,
-        // backgroundColor: 'green',
-        // right: 0,
-        // left: 0,
-        // top: 0,
-        // bottom: 0,
-        // justifyContent: 'center',
-        // alignItems: 'center',
         zIndex: 2
     },
     gameUserTouchable: {
@@ -94,6 +90,13 @@ export const styles = StyleSheet.create({
         width: gameUserWidth,
         height: gameUserWidth,
     },
+    gameUsers: {
+        position: 'relative',
+        width: gameUserWidth,
+        height: gameUserWidth,
+        zIndex: 2
+    },
+
     userMenu: {
         position: 'absolute',
         right: 0,

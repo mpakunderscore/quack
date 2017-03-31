@@ -21,12 +21,25 @@ websocket.on('connection', (socket) => {
     socket.emit('map', map);
 
     socket.on('sound', (message) => receiveSound(socket, message));
+    socket.on('location', (region) => receiveLocation(socket, region));
+
 });
 
 function receiveSound(socket, message) {
 
-    console.log('sound from : ' + socket.id);
+    console.log('sound from: ' + socket.id + ' ' + message);
 
     // socket.emit('sound', '');
     socket.broadcast.emit('sound', '');
+}
+
+function receiveLocation(socket, region) {
+
+    region = JSON.parse(region);
+
+    console.log('location ' + JSON.stringify(region) + ' from: ' + socket.id);
+
+    region.id = socket.id;
+
+    socket.broadcast.emit('location', JSON.stringify(region));
 }

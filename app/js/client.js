@@ -1,7 +1,12 @@
 //CLIENT
 
 import {playSound} from './actions';
+import {placeUser} from './utils/map';
+// import {Map} from './utils/map';
 import SocketIOClient from 'socket.io-client';
+
+//"OS":"ios","Version":"10.2.1"
+import {Platform} from 'react-native';
 
 const ip = '92.61.69.168';
 
@@ -13,14 +18,20 @@ export let sendSound = function () {
     socket.emit('sound', 'some sound');
 };
 
+export let sendLocation = function (region) {
+    socket.emit('location', JSON.stringify(region));
+};
+
 socket.on('sound', (message) => {
-    // Alert.alert(message);
     playSound();
 });
 
 socket.on('map', (map) => {
 
     //TODO map here
-    // Alert.alert(map);
     // buildMap(map);
+});
+
+socket.on('location', (region) => {
+    placeUser(JSON.parse(region));
 });

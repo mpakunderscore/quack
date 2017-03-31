@@ -1,10 +1,19 @@
-4. Обновлять геолокацию при движении (проверить как работает)
+4. Зумить карту
+5. Показывать других игроков
 6. Открывать игровой стейт после клика квак на первом
-
-На моем нексусе не работает геолокация
+7. Дублируется отправление локаций с телефонов
 
 
 
 adb devices
 react-native run-android
 export PATH="/Users/pavelkuzmin/Library/Android/sdk/platform-tools":$PATH
+
+
+/Users/pavelkuzmin/Library/Android/sdk/tools/android
+
+
+
+react-native bundle --dev false --platform android --entry-file index.android.js --bundle-output ./android/app/build/intermediates/assets/debug/index.android.bundle --assets-dest ./android/app/build/intermediates/res/merged/debug
+cd android/
+./gradlew assembleDebug
