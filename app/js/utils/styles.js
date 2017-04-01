@@ -7,7 +7,6 @@ let font = 'Chalkduster';
 
 //TODO %
 export let gameUserWidth = 80;
-
 export let gameUsersWidth = gameUserWidth;
 
 let fontSize = 30;
@@ -23,7 +22,7 @@ export const styles = StyleSheet.create({
         flex: 1,
         // position: 'absolute', left: 0, right: 0, bottom: 0,
         opacity: 0.2,
-        zIndex: 1
+        // zIndex: 1
     },
     mainMenu: {
         position: 'absolute',
@@ -36,7 +35,7 @@ export const styles = StyleSheet.create({
         // backgroundColor: 'red',
         opacity: 1.0,
         // opacity: 0.5,
-        zIndex: 2
+        // zIndex: 2
     },
         welcome: {
             fontFamily: font,
@@ -75,7 +74,32 @@ export const styles = StyleSheet.create({
         flex: 1,
         // position: 'absolute', left: 0, right: 0, bottom: 0,
         // opacity: 0.2,
-        zIndex: 1
+        // zIndex: 1
+    },
+    gestures: {
+        position: 'absolute',
+        right: 0,
+        left: 0,
+        top: 0,
+        bottom: 0,
+        borderWidth: 0,
+        backgroundColor: 'transparent',
+
+        // zIndex: 2,
+    },
+
+    gameMenu: {
+        position: 'absolute',
+        right: 0,
+        left: 0,
+        top: 0,
+        bottom: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+        // backgroundColor: 'red',
+        // opacity: 1.0,
+        opacity: 0.5,
+        // zIndex: 2,
     },
 
     gameUser: {
@@ -89,6 +113,7 @@ export const styles = StyleSheet.create({
         // backgroundColor: 'green',
         width: gameUserWidth,
         height: gameUserWidth,
+        zIndex: 2
     },
     gameUsers: {
         position: 'relative',

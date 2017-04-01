@@ -3,6 +3,9 @@ import {Alert, Image} from 'react-native';
 
 import MapView from 'react-native-maps';
 
+import Gestures from 'react-native-touch-gestures';
+
+
 import {styles} from './styles';
 import {images} from './images';
 
@@ -14,12 +17,52 @@ import {gameUsersWidth} from './styles';
 //'30.3275';
 
 let delta = 0.005;
+// let delta = 0.05;
+
+let map = {};
 
 export class Map extends Component {
 
     constructor(props) {
 
         super(props);
+
+        map.setUser = (user) => {
+
+            let markers = this.getMarkers();
+
+            let place = markers.place(user);
+
+            if (place > -1)
+                markers[place] = user;
+
+            else
+                markers.push(user);
+
+            // console.log('markers');
+            // console.log(markers);
+
+            this.setState({
+                markers: markers
+            });
+        };
+
+        map.removeUser = (id) => {
+
+            let markers = this.getMarkers();
+
+            let place = markers.place({id: id});
+
+            if (place > -1)
+                markers = markers.remove(id);
+
+            // console.log('markers');
+            // console.log(markers);
+
+            this.setState({
+                markers: markers
+            });
+        };
 
         this.state = {
             region: {
@@ -28,39 +71,40 @@ export class Map extends Component {
                 latitudeDelta: delta,
                 longitudeDelta: delta
             },
-            markers: [
-                {
-                    id: '0',
-                    region: {
-                        latitude: 59.9537,
-                        longitude: 30.3275,
-                    },
-                    title: 'test',
-                    description: 'test'
-                }
-            ]
+            markers: []
         };
 
         this.setLocation = this.setLocation.bind(this);
         this.getRegion = this.getRegion.bind(this);
-        this.setUser = this.setUser.bind(this);
+        this.onPinch = this.onPinch.bind(this);
+        this.onTap = this.onTap.bind(this);
+        this.onPan = this.onPan.bind(this);
+        // this.getMarkers = this.getMarkers.bind(this);
 
         navigator.geolocation.watchPosition(this.setLocation, (error) => {
 
-            }, {enableHighAccuracy: true, timeout: 1000, maximumAge: 1000}
+            }, {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
         );
-    }
-
-    setUser(user) {
-
-        // https://stackoverflow.com/questions/26253351/correct-modification-of-state-arrays-in-reactjs
-        this.setState({
-            markers: this.state.markers.concat([user])
-        });
     }
 
     getRegion() {
         return this.state.region;
+    }
+
+    onPinch() {
+        Alert.alert('onPinch')
+    }
+
+    onTap() {
+        Alert.alert('onTap')
+    }
+
+    onPan() {
+        Alert.alert('onPan')
+    }
+
+    getMarkers() {
+        return this.state.markers;
     }
 
     setLocation(position) {
@@ -91,25 +135,32 @@ export class Map extends Component {
 
     render() {
         return (
-            <MapView
-                style={styles.gameMap}
-                region={this.state.region}
+            <Gestures.View
+                style={styles.gestures}
+                onPinch={this.onPinch}
+                onTap={this.onTap}
+                onPan={this.onPan}
             >
-                {this.state.markers.map(marker => (
+                <MapView
+                    style={styles.gameMap}
+                    region={this.state.region}
+                >
+                    {this.state.markers.map(marker => (
 
-                    <MapView.Marker
-                        coordinate={marker.region}
-                        key={marker.id}
-                        title={marker.title}
-                        description={marker.description}
-                    >
-                        <Image source={images.goose}
-                               style={styles.gameUsers}/>
+                        <MapView.Marker
+                            coordinate={marker.region}
+                            key={marker.id}
+                            title={marker.title}
+                            description={marker.description}
+                        >
+                            <Image source={images.goose}
+                                   style={styles.gameUsers}/>
 
-                    </MapView.Marker>
+                        </MapView.Marker>
 
-                ))}
-            </MapView>
+                    ))}
+                </MapView>
+            </Gestures.View>
         );
     }
 }
@@ -126,8 +177,63 @@ export function placeUser(region) {
         description: 'user'
     };
 
-    // this.Map.setUser(user);
+    map.setUser(user);
 
-    console.log('user');
-    console.log(user)
+    // console.log('user');
+    // console.log(user)
 }
+
+
+export function removeUser(id) {
+    map.removeUser(id);
+}
+
+export function buildMap(map) {
+
+    //
+
+    // let testRegion = {
+    //     id: '0',
+    //     latitude: 59.9537,
+    //     longitude: 30.3275,
+    // };
+
+    let home = map.home;
+
+    let users = map.users;
+
+    console.log('users');
+    console.log(users);
+
+    users.map(user => {
+        placeUser(user);
+    });
+
+    let items = map.items;
+
+    let stores = map.stores;
+}
+
+Array.prototype.place = function(obj) {
+
+    let i = this.length;
+    while (i--) {
+
+        if (this[i].id == obj.id) {
+            return i;
+        }
+    }
+    return -1;
+};
+
+
+Array.prototype.remove = function(id) {
+
+    let i = this.length;
+    while (i--) {
+
+        if (this[i].id == id) {
+            this.splice(i, 1);
+        }
+    }
+};

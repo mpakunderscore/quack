@@ -9,10 +9,6 @@ import {images} from './utils/images';
 
 import {selfClick} from './actions';
 
-export function placeUser(region) {
-    Map.placeUser(region)
-}
-
 export class MainMap extends Component {
     render() {
         return (
@@ -51,7 +47,7 @@ export class GameMap extends Component {
 export class GameMenu extends Component {
     render() {
         return (
-            <View style={styles.mainMenu}>
+            <View style={styles.gameMenu}>
                 <TouchableOpacity
                     onPress={selfClick}
                     style={styles.gameUserTouchable}>

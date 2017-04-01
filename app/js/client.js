@@ -2,6 +2,9 @@
 
 import {playSound} from './actions';
 import {placeUser} from './utils/map';
+import {removeUser} from './utils/map';
+import {buildMap} from './utils/map';
+
 // import {Map} from './utils/map';
 import SocketIOClient from 'socket.io-client';
 
@@ -27,11 +30,13 @@ socket.on('sound', (message) => {
 });
 
 socket.on('map', (map) => {
-
-    //TODO map here
-    // buildMap(map);
+    buildMap(JSON.parse(map));
 });
 
 socket.on('location', (region) => {
     placeUser(JSON.parse(region));
+});
+
+socket.on('disconnect', (id) => {
+    removeUser(id);
 });
