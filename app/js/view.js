@@ -3,46 +3,84 @@ import {View, Text, Image, Alert, TouchableOpacity} from 'react-native';
 
 import {Map} from './utils/map';
 
-import {styles} from './utils/styles';
+import {styles} from './styles/styles';
 import {texts} from './utils/texts';
 import {images} from './utils/images';
 
 import {selfClick} from './actions';
+import {selectClick} from './actions';
 
-export class MainMap extends Component {
+//android cannot just hide nav. bar
+
+function onTap() {
+    Alert.alert('onTap')
+}
+
+export class Main extends Component {
     render() {
         return (
-            <Map/>
-        );
+            <View style={styles.container}>
+                <Map/>
+                <MainMenu/>
+            </View>
+        )
     }
 }
+
+export class Game extends Component {
+    render() {
+        return (
+            <View style={styles.container}>
+                <Map/>
+                <TouchableOpacity
+                    style={styles.gameMapTouchable}
+                    onPress={onTap()}>
+                    <GameMenu/>
+                </TouchableOpacity>
+            </View>
+        )
+    }
+}
+
+// export class MainMap extends Component {
+//     render() {
+//         return (
+//             <Map/>
+//         );
+//     }
+// }
 
 export class MainMenu extends Component {
     render() {
         return (
-            <View style={styles.mainMenu}>
-                <Text style={styles.welcome}>
+            <View style={styles.menu}>
+                <Text style={styles.welcomeText}>
                     {texts.welcome}
                 </Text>
-                <Image
-                    style={styles.selectAnimal}
-                    source={images.goose}
-                />
-                <Text style={styles.select}>
-                    {texts.ok}
-                </Text>
+                <TouchableOpacity
+                    onPress={selectClick}
+                    style={styles.selectAnimalTouchable}>
+                    <Image
+                        style={styles.selectAnimal}
+                        source={images.goose}
+                    />
+                </TouchableOpacity>
+
+                {/*<Text style={styles.select}>*/}
+                    {/*{texts.ok}*/}
+                {/*</Text>*/}
             </View>
         );
     }
 }
 
-export class GameMap extends Component {
-    render() {
-        return (
-            <Map/>
-        );
-    }
-}
+// export class GameMap extends Component {
+//     render() {
+//         return (
+//             <Map/>
+//         );
+//     }
+// }
 
 export class GameMenu extends Component {
     render() {

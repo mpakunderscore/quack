@@ -2,11 +2,18 @@ import {sound} from './utils/sound'
 
 import {sendSound} from './client';
 
+import {play} from './../index';
+
 export const selfClick = () => {
 
     sendSound();
 
-    playSound();
+    // playSound();
+};
+
+export const selectClick = () => {
+
+    play();
 };
 
 export function playSound() {

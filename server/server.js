@@ -11,18 +11,17 @@ let websocket = socketio(server);
 let port = 3000;
 
 let map = {
-    users: []
+    users: {},
+    places: []
 };
 
 server.listen(port, () => console.log('listening: ' + port));
 
 websocket.on('connection', (socket) => {
 
-    console.log('client: ' + socket.id);
+    console.log('connect: ' + socket.id);
 
-    //Send map here
-    console.log('map');
-    console.log(map);
+    // console.log(map);
 
     socket.emit('map', JSON.stringify(map));
 
@@ -35,9 +34,9 @@ function removeUser(socket) {
 
     console.log('disconnect: ' + socket.id);
 
-    // map.users.remove(socket.id);
+    delete map.users[socket.id];
 
-    // socket.broadcast.emit('disconnect', socket.id);
+    socket.broadcast.emit('disconnect', socket.id);
 }
 
 function receiveSound(socket, message) {
@@ -55,17 +54,36 @@ function receiveLocation(socket, region) {
 
     region.id = socket.id;
 
-    let place = map.users.place(region);
+    region.time = new Date().getTime();
 
-    if (place > -1)
-        map.users[place] = region;
+    // let place = map.users.place(region);
+    //
+    // if (place > -1)
+    //     map.users[place] = region;
+    //
+    // else
+    //     map.users.push(region);
 
-    else
-        map.users.push(region);
+    map.users[region.id] = region;
 
     socket.broadcast.emit('location', JSON.stringify(region));
 }
 
+// function checkUsers() {
+//
+//     for (let i = 0; i < map.users.length; i++) {
+//
+//         if (map.users[i].time < new Date().getTime() - 60000) {
+//
+//             console.log('remove user: ' + map.users[i].id);
+//             map.users.splice(i, 1);
+//         }
+//     }
+//
+//     setTimeout(checkUsers, 5000);
+// }
+//
+// setTimeout(checkUsers, 5000);
 
 Array.prototype.place = function(obj) {
 

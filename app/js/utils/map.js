@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
-import {Alert, Image} from 'react-native';
+import {Alert, Image, TouchableOpacity} from 'react-native';
 
 import MapView from 'react-native-maps';
 
-import Gestures from 'react-native-touch-gestures';
+// import Gestures from 'react-native-touch-gestures';
 
-
-import {styles} from './styles';
+import {styles} from '../styles/styles';
 import {images} from './images';
 
 import {playSound} from '../actions';
 import {sendLocation} from '../client';
-import {gameUsersWidth} from './styles';
 
 //'59.9547';
 //'30.3275';
@@ -124,7 +122,7 @@ export class Map extends Component {
         if (region === this.getRegion())
             return;
 
-        playSound();
+        // playSound();
 
         sendLocation(region);
 
@@ -135,32 +133,25 @@ export class Map extends Component {
 
     render() {
         return (
-            <Gestures.View
-                style={styles.gestures}
-                onPinch={this.onPinch}
-                onTap={this.onTap}
-                onPan={this.onPan}
+            <MapView
+                style={styles.gameMap}
+                region={this.state.region}
             >
-                <MapView
-                    style={styles.gameMap}
-                    region={this.state.region}
-                >
-                    {this.state.markers.map(marker => (
+                {this.state.markers.map(marker => (
 
-                        <MapView.Marker
-                            coordinate={marker.region}
-                            key={marker.id}
-                            title={marker.title}
-                            description={marker.description}
-                        >
-                            <Image source={images.goose}
-                                   style={styles.gameUsers}/>
+                    <MapView.Marker
+                        coordinate={marker.region}
+                        key={marker.id}
+                        title={marker.title}
+                        description={marker.description}
+                    >
+                        <Image source={images.goose}
+                               style={styles.gameUser}/>
 
-                        </MapView.Marker>
+                    </MapView.Marker>
 
-                    ))}
-                </MapView>
-            </Gestures.View>
+                ))}
+            </MapView>
         );
     }
 }
@@ -205,9 +196,13 @@ export function buildMap(map) {
     console.log('users');
     console.log(users);
 
-    users.map(user => {
-        placeUser(user);
-    });
+    for (let id in users) {
+        placeUser(users[id]);
+    }
+
+    // users.map(user => {
+    //     placeUser(user);
+    // });
 
     let items = map.items;
 

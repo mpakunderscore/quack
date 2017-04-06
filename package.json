@@ -12,6 +12,7 @@
     "nodemon": "^1.11.0",
     "react": "15.4.2",
     "react-native": "0.42.3",
+    "react-native-gps": "^0.1.1",
     "react-native-maps": "^0.13.1",
     "react-native-socketio": "^0.3.0",
     "react-native-sound": "^0.9.1",
