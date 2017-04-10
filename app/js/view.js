@@ -10,45 +10,15 @@ import {images} from './utils/images';
 import {selfClick} from './actions';
 import {selectClick} from './actions';
 
+import {state} from '../index';
+
 //android cannot just hide nav. bar
 
 function onTap() {
-    Alert.alert('onTap')
+    // Alert.alert('onTap')
 }
 
-export class Main extends Component {
-    render() {
-        return (
-            <View style={styles.container}>
-                <Map/>
-                <MainMenu/>
-            </View>
-        )
-    }
-}
 
-export class Game extends Component {
-    render() {
-        return (
-            <View style={styles.container}>
-                <Map/>
-                <TouchableOpacity
-                    style={styles.gameMapTouchable}
-                    onPress={onTap()}>
-                    <GameMenu/>
-                </TouchableOpacity>
-            </View>
-        )
-    }
-}
-
-// export class MainMap extends Component {
-//     render() {
-//         return (
-//             <Map/>
-//         );
-//     }
-// }
 
 export class MainMenu extends Component {
     render() {
@@ -73,14 +43,6 @@ export class MainMenu extends Component {
         );
     }
 }
-
-// export class GameMap extends Component {
-//     render() {
-//         return (
-//             <Map/>
-//         );
-//     }
-// }
 
 export class GameMenu extends Component {
     render() {
@@ -109,6 +71,18 @@ export class BottomMenu extends Component {
                 </Text>
                 <Text style={styles.userMenuText}>
                     {texts.menu}
+                </Text>
+            </View>
+        );
+    }
+}
+
+export class Error extends Component {
+    render() {
+        return (
+            <View style={styles.userMenu}>
+                <Text style={styles.welcomeText}>
+                    Error
                 </Text>
             </View>
         );

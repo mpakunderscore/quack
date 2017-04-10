@@ -4,6 +4,8 @@ import {sendSound} from './client';
 
 import {play} from './../index';
 
+import {Alert} from 'react-native';
+
 export const selfClick = () => {
 
     sendSound();
@@ -12,6 +14,8 @@ export const selfClick = () => {
 };
 
 export const selectClick = () => {
+
+    Alert.alert('selectClick')
 
     play();
 };

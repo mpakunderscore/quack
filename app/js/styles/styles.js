@@ -94,43 +94,56 @@ export const styles = StyleSheet.create({
         gameMapTouchable: {
             flex: 1,
 
-            backgroundColor: 'transparent',
-
-            zIndex: 2,
         },
 
         gameMenu: {
             // flex: 1,
             position: 'absolute',
+
             right: 0,
             left: 0,
             top: 0,
             bottom: 0,
 
+            // flexDirection: 'column',
+            // justifyContent: 'center',
+            // alignItems: 'center',
+
+            backgroundColor: 'transparent',
+            // opacity: 0.5,
+
+            // zIndex: 2,
+        },
+
+        gameMenu: {
+            flex: 1,
+            position: 'absolute',
+
+
             justifyContent: 'center',
             alignItems: 'center',
 
-            // backgroundColor: 'red',
+            // backgroundColor: 'green',
             // opacity: 0.5,
 
             backgroundColor: 'transparent',
 
-            zIndex: 2,
+            // zIndex: 2,
         },
 
         gameUser: {
-            position: 'absolute',
+            // position: 'absolute',
             width: gameUserWidth,
             height: gameUserWidth,
             // backgroundColor: 'red',
-            zIndex: 3
+            // zIndex: 3
         },
         gameUserTouchable: {
             // backgroundColor: 'transparent',
             // backgroundColor: 'green',
             width: gameUserWidth,
             height: gameUserWidth,
-            zIndex: 3
+            // zIndex: 3
         },
 
         gameUsers: {
