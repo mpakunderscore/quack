@@ -15,9 +15,14 @@ export const selfClick = () => {
 
 export const selectClick = () => {
 
-    Alert.alert('selectClick')
+    // Alert.alert('selectClick')
 
     play();
+};
+
+export const alert = () => {
+
+    Alert.alert('Alert')
 };
 
 export function playSound() {

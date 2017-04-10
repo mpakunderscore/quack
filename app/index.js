@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 import {View} from 'react-native';
 
@@ -17,7 +17,7 @@ export class Index extends Component {
     render() {
             return (
                 <View style={styles.container}>
-                    <Map style={styles.map}/>
+                    <Map/>
                     <Menu/>
                 </View>
             )
@@ -32,16 +32,12 @@ export class Menu extends Component {
 
         index.play = () => {
             this.setState({
-                main: "play"
+                main: 'play'
             });
         };
 
-        index.state = () => {
-            this.getMain();
-        };
-
         this.state = {
-            main: "main"
+            main: 'main'
         };
 
         this.getMain = this.getMain.bind(this);
@@ -53,10 +49,10 @@ export class Menu extends Component {
 
     render() {
 
-        if (this.getMain() === "main")
+        if (this.getMain() === 'main')
             return (<MainMenu/>);
 
-        else if (this.getMain() === "play")
+        else if (this.getMain() === 'play')
             return (<GameMenu/>);
 
         else
@@ -65,14 +61,9 @@ export class Menu extends Component {
 }
 
 export function play() {
+
+    styles.map.opacity = 1.0;
+
     index.play();
-}
-
-export function state() {
-
-    let state = index.state();
-
-    if (state == null)
-        return "main";
 }
 

@@ -74,10 +74,11 @@ export class Map extends Component {
 
         this.setLocation = this.setLocation.bind(this);
         this.getRegion = this.getRegion.bind(this);
-        this.onPinch = this.onPinch.bind(this);
-        this.onTap = this.onTap.bind(this);
-        this.onPan = this.onPan.bind(this);
-        // this.getMarkers = this.getMarkers.bind(this);
+
+        // this.onPinch = this.onPinch.bind(this);
+        // this.onTap = this.onTap.bind(this);
+        // this.onPan = this.onPan.bind(this);
+        this.getMarkers = this.getMarkers.bind(this);
 
         navigator.geolocation.watchPosition(this.setLocation, (error) => {
 
@@ -134,7 +135,7 @@ export class Map extends Component {
     render() {
         return (
             <MapView
-                style={styles.gameMap}
+                style={styles.map}
                 region={this.state.region}
             >
                 {this.state.markers.map(marker => (

@@ -30,8 +30,8 @@ export const styles = StyleSheet.create({
 
         menu: {
             position: 'absolute',
-            right: 0,
             left: 0,
+            right: 0,
             top: 0,
             bottom: 0,
             justifyContent: 'center',
@@ -84,13 +84,6 @@ export const styles = StyleSheet.create({
 
     //GAME
 
-        gameMap: {
-            flex: 1,
-
-            position: 'absolute', left: 0, right: 0, bottom: 0,
-
-            zIndex: 1
-        },
         gameMapTouchable: {
             flex: 1,
 
@@ -99,34 +92,17 @@ export const styles = StyleSheet.create({
         gameMenu: {
             // flex: 1,
             position: 'absolute',
-
-            right: 0,
             left: 0,
+            right: 0,
             top: 0,
             bottom: 0,
 
-            // flexDirection: 'column',
-            // justifyContent: 'center',
-            // alignItems: 'center',
-
-            backgroundColor: 'transparent',
-            // opacity: 0.5,
-
-            // zIndex: 2,
-        },
-
-        gameMenu: {
-            flex: 1,
-            position: 'absolute',
-
-
+            flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
 
-            // backgroundColor: 'green',
-            // opacity: 0.5,
-
             backgroundColor: 'transparent',
+            // opacity: 0.5,
 
             // zIndex: 2,
         },
