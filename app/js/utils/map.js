@@ -62,7 +62,39 @@ export class Map extends Component {
             });
         };
 
+        map.moveOut = () => {
+
+            this.setState({
+                region: {
+                    latitude: this.getRegion().latitude,
+                    longitude: this.getRegion().longitude,
+                    latitudeDelta: this.getRegion().latitudeDelta * 1.1,
+                    longitudeDelta: this.getRegion().longitudeDelta * 1.1
+                }
+            });
+        };
+
+        map.moveIn = () => {
+
+            this.setState({
+                region: {
+                    latitude: this.getRegion().latitude,
+                    longitude: this.getRegion().longitude,
+                    latitudeDelta: 0.005,
+                    longitudeDelta: 0.005
+                }
+            });
+        };
+
+        map.playState = () => {
+
+            this.setState({
+                style: styles.gameMap
+            });
+        };
+
         this.state = {
+            style: styles.map,
             region: {
                 latitude: 0,
                 longitude: 0,
@@ -75,9 +107,6 @@ export class Map extends Component {
         this.setLocation = this.setLocation.bind(this);
         this.getRegion = this.getRegion.bind(this);
 
-        // this.onPinch = this.onPinch.bind(this);
-        // this.onTap = this.onTap.bind(this);
-        // this.onPan = this.onPan.bind(this);
         this.getMarkers = this.getMarkers.bind(this);
 
         navigator.geolocation.watchPosition(this.setLocation, (error) => {
@@ -88,18 +117,6 @@ export class Map extends Component {
 
     getRegion() {
         return this.state.region;
-    }
-
-    onPinch() {
-        Alert.alert('onPinch')
-    }
-
-    onTap() {
-        Alert.alert('onTap')
-    }
-
-    onPan() {
-        Alert.alert('onPan')
     }
 
     getMarkers() {
@@ -135,7 +152,7 @@ export class Map extends Component {
     render() {
         return (
             <MapView
-                style={styles.map}
+                style={this.state.style}
                 region={this.state.region}
             >
                 {this.state.markers.map(marker => (
@@ -178,6 +195,18 @@ export function placeUser(region) {
 
 export function removeUser(id) {
     map.removeUser(id);
+}
+
+export function moveOut() {
+    map.moveOut(delta);
+}
+
+export function moveIn() {
+    map.moveIn(delta);
+}
+
+export function playState() {
+    map.playState();
 }
 
 export function buildMap(map) {

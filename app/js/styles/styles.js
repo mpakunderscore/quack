@@ -25,6 +25,13 @@ export const styles = StyleSheet.create({
         flex: 1,
         opacity: 0.2,
     },
+    gameMap: {
+        flex: 1,
+        opacity: 0.7,
+    },
+    button: {
+        backgroundColor: "red"
+    },
 
     //MAIN
 

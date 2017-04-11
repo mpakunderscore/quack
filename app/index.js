@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import {View} from 'react-native';
 
 import {Map} from './js/utils/map';
+import {playState} from './js/utils/map';
 
 import {MainMenu} from './js/view';
 import {GameMenu} from './js/view';
@@ -62,8 +63,9 @@ export class Menu extends Component {
 
 export function play() {
 
-    styles.map.opacity = 1.0;
-
     index.play();
+
+    //map
+    playState();
 }
 
