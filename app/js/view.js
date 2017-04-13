@@ -8,6 +8,8 @@ import {images} from './utils/images';
 import {selfClick} from './actions';
 import {selectClick} from './actions';
 import {menuClick} from './actions';
+import {itemsClick} from './actions';
+
 
 import {moveOut} from './map';
 import {moveIn} from './map';
@@ -110,7 +112,7 @@ export class BottomMenu extends Component {
         return (
             <View style={styles.userMenu}>
 
-                <TouchableOpacity onPress={menu()}
+                <TouchableOpacity onPress={itemsClick()}
                                   style={styles.button}>
                     <Text style={styles.userMenuText}>
                         {texts.items}

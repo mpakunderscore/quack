@@ -27,6 +27,13 @@ export function menuClick() {
     Alert.alert('Menu')
 };
 
+export function itemsClick() {
+
+    // Alert.alert('selectClick')
+
+    Alert.alert('Items')
+};
+
 export const alert = () => {
 
     Alert.alert('Alert')
