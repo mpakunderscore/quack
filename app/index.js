@@ -2,16 +2,14 @@ import React, { Component } from 'react';
 
 import {View} from 'react-native';
 
-import {Map} from './js/utils/map';
-import {playState} from './js/utils/map';
+import {Map} from './js/map';
+import {map} from './js/map';
 
 import {MainMenu} from './js/view';
 import {GameMenu} from './js/view';
 import {Error} from './js/view';
 
 import {styles} from './js/styles/styles';
-
-let index = {};
 
 export class Index extends Component {
 
@@ -25,13 +23,15 @@ export class Index extends Component {
     }
 }
 
+let menu = {};
+
 export class Menu extends Component {
 
     constructor(props) {
 
         super(props);
 
-        index.play = () => {
+        menu.play = () => {
             this.setState({
                 main: 'play'
             });
@@ -63,9 +63,7 @@ export class Menu extends Component {
 
 export function play() {
 
-    index.play();
-
-    //map
-    playState();
+    menu.play();
+    map.play();
 }
 

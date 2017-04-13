@@ -1,9 +1,10 @@
 //CLIENT
 
 import {playSound} from './actions';
-import {placeUser} from './utils/map';
-import {removeUser} from './utils/map';
-import {buildMap} from './utils/map';
+
+import {placeUser} from './map';
+import {removeUser} from './map';
+import {buildMap} from './map';
 
 // import {Map} from './utils/map';
 import SocketIOClient from 'socket.io-client';

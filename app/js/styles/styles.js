@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
         opacity: 0.7,
     },
     button: {
-        backgroundColor: "red"
+        // backgroundColor: "red"
     },
 
     //MAIN

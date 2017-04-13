@@ -5,11 +5,11 @@ import MapView from 'react-native-maps';
 
 // import Gestures from 'react-native-touch-gestures';
 
-import {styles} from '../styles/styles';
-import {images} from './images';
+import {styles} from './styles/styles';
+import {images} from './utils/images';
 
-import {playSound} from '../actions';
-import {sendLocation} from '../client';
+import {playSound} from './actions';
+import {sendLocation} from './client';
 
 //'59.9547';
 //'30.3275';
@@ -17,7 +17,7 @@ import {sendLocation} from '../client';
 let delta = 0.005;
 // let delta = 0.05;
 
-let map = {};
+export let map = {};
 
 export class Map extends Component {
 
@@ -86,7 +86,7 @@ export class Map extends Component {
             });
         };
 
-        map.playState = () => {
+        map.play = () => {
 
             this.setState({
                 style: styles.gameMap
@@ -203,10 +203,6 @@ export function moveOut() {
 
 export function moveIn() {
     map.moveIn(delta);
-}
-
-export function playState() {
-    map.playState();
 }
 
 export function buildMap(map) {

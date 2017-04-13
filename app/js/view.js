@@ -1,18 +1,16 @@
 import React, {Component} from 'react';
 import {View, Text, Image, Alert, TouchableHighlight, TouchableOpacity} from 'react-native';
 
-import {Map} from './utils/map';
-
 import {styles} from './styles/styles';
 import {texts} from './utils/texts';
 import {images} from './utils/images';
 
 import {selfClick} from './actions';
 import {selectClick} from './actions';
-import {menu} from './actions';
+import {menuClick} from './actions';
 
-import {moveOut} from './utils/map';
-import {moveIn} from './utils/map';
+import {moveOut} from './map';
+import {moveIn} from './map';
 
 import {alert} from './actions';
 
@@ -119,7 +117,7 @@ export class BottomMenu extends Component {
                     </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={menu()}
+                <TouchableOpacity onPress={menuClick()}
                                     style={styles.button}>
                     <Text style={styles.userMenuText}>
                         {texts.menu}

@@ -20,7 +20,7 @@ export const selectClick = () => {
     play();
 };
 
-export function menu() {
+export function menuClick() {
 
     // Alert.alert('selectClick')
 
