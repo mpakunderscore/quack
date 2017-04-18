@@ -1,10 +1,14 @@
-import {sound} from './utils/sound'
+//view controller
+
+import {sound} from './utils/sound';
 
 import {sendSound} from './client';
 
 import {play} from './../index';
 
 import {Alert} from 'react-native';
+
+import {map} from './map';
 
 export const selfClick = () => {
 
@@ -53,3 +57,12 @@ export function playSound() {
         // }
     });
 }
+
+export function moveOut(x) {
+    map.moveOut(x);
+}
+
+export function moveIn() {
+    map.moveIn(delta);
+}
+

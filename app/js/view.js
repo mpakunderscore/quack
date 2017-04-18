@@ -9,12 +9,8 @@ import {selfClick} from './actions';
 import {selectClick} from './actions';
 import {menuClick} from './actions';
 import {itemsClick} from './actions';
-
-
-import {moveOut} from './map';
-import {moveIn} from './map';
-
-import {alert} from './actions';
+import {moveOut} from './actions';
+import {moveIn} from './actions';
 
 export class MainMenu extends Component {
     render() {
@@ -53,7 +49,7 @@ export class GameMenu extends Component {
         //     y: this.state.x + (e.nativeEvent.pageY - this.drag.y)
         // });
 
-        moveOut(this.drag.x);
+        moveOut(e.nativeEvent.pageX);
 
         //Set our drag to be the new position so our delta can be calculated next time correctly
         this.drag.x = e.nativeEvent.pageX;

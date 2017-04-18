@@ -62,7 +62,7 @@ export class Map extends Component {
             });
         };
 
-        map.moveOut = () => {
+        map.moveOut = (x) => {
 
             this.setState({
                 region: {
@@ -195,14 +195,6 @@ export function placeUser(region) {
 
 export function removeUser(id) {
     map.removeUser(id);
-}
-
-export function moveOut() {
-    map.moveOut(delta);
-}
-
-export function moveIn() {
-    map.moveIn(delta);
 }
 
 export function buildMap(map) {
