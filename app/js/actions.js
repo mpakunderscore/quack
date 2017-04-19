@@ -28,14 +28,14 @@ export function menuClick() {
 
     // Alert.alert('selectClick')
 
-    Alert.alert('Menu')
+    // Alert.alert('Menu')
 };
 
 export function itemsClick() {
 
     // Alert.alert('selectClick')
 
-    Alert.alert('Items')
+    // Alert.alert('Items')
 };
 
 export const alert = () => {
@@ -58,11 +58,28 @@ export function playSound() {
     });
 }
 
-export function moveOut(x) {
-    map.moveOut(x);
+// export function moveOut(x) {
+//     map.moveOut(x);
+// }
+//
+// export function moveIn() {
+//     map.moveIn();
+// }
+
+export function zoom(y) {
+
+    let bias = 0;
+
+    // Alert.alert(y + '')
+
+    if (y > 0)
+        bias = 1.05;
+
+    else
+        bias = 0.95;
+
+    map.zoom(bias)
 }
 
-export function moveIn() {
-    map.moveIn(delta);
-}
+
 

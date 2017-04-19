@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {View, Text, Image, Alert, TouchableHighlight, TouchableOpacity} from 'react-native';
 
+import Swiper from 'react-native-swiper';
+
 import {styles} from './styles/styles';
 import {texts} from './utils/texts';
 import {images} from './utils/images';
@@ -9,8 +11,47 @@ import {selfClick} from './actions';
 import {selectClick} from './actions';
 import {menuClick} from './actions';
 import {itemsClick} from './actions';
-import {moveOut} from './actions';
-import {moveIn} from './actions';
+// import {moveOut} from './actions';
+// import {moveIn} from './actions';
+import {zoom} from './actions';
+
+export let menu = {};
+
+export class Menu extends Component {
+
+    constructor(props) {
+
+        super(props);
+
+        menu.play = () => {
+            this.setState({
+                main: 'play'
+            });
+        };
+
+        this.state = {
+            main: 'main'
+        };
+
+        this.getMain = this.getMain.bind(this);
+    }
+
+    getMain() {
+        return this.state.main;
+    }
+
+    render() {
+
+        if (this.getMain() === 'main')
+            return (<MainMenu/>);
+
+        else if (this.getMain() === 'play')
+            return (<GameMenu/>);
+
+        else
+            return (<Error/>);
+    }
+}
 
 export class MainMenu extends Component {
     render() {
@@ -21,58 +62,65 @@ export class MainMenu extends Component {
                     {texts.welcome}
                 </Text>
 
-                <TouchableOpacity
-                    onPress={selectClick}
-                    style={styles.selectAnimalTouchable}>
-                    <Image
-                        style={styles.selectAnimal}
-                        source={images.goose}
-                    />
-                </TouchableOpacity>
+                <Swiper style={styles.swiper}
+                        showsButtons={false}
+                        showsPagination={false}>
 
-                {/*<Text style={styles.select}>*/}
-                    {/*{texts.ok}*/}
-                {/*</Text>*/}
+                    <View style={styles.swiperView}>
+                        <TouchableOpacity
+                            onPress={selectClick}
+                            style={styles.selectAnimalTouchable}>
+                            <Image
+                                style={styles.selectAnimal}
+                                source={images.goose}
+                            />
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style={styles.swiperView}>
+                        <TouchableOpacity
+                            onPress={selectClick}
+                            style={styles.selectAnimalTouchable}>
+                            <Image
+                                style={styles.selectAnimal}
+                                source={images.goose}
+                            />
+                        </TouchableOpacity>
+                    </View>
+
+                </Swiper>
+
+                <Text style={styles.select}>
+                    {texts.ok}
+                </Text>
 
             </View>
         );
     }
 }
 
+let oldY = null;
+
 export class GameMenu extends Component {
 
     onMove(e) {
 
-        //Update our state with the deltaX/deltaY of the movement
-        // this.setState({
-        //     x: this.state.x + (e.nativeEvent.pageX - this.drag.x),
-        //     y: this.state.x + (e.nativeEvent.pageY - this.drag.y)
-        // });
+        if (oldY === null) {
+            oldY = e.nativeEvent.pageY;
+            return;
+        }
 
-        moveOut(e.nativeEvent.pageX);
+        zoom(oldY - e.nativeEvent.pageY);
 
-        //Set our drag to be the new position so our delta can be calculated next time correctly
-        this.drag.x = e.nativeEvent.pageX;
-        this.drag.y = e.nativeEvent.pageY;
+        oldY = e.nativeEvent.pageY;
     }
 
     onRelease(e) {
 
-        moveIn();
-
-        //Reset on release
-        // this.setState({
-        //     x: 0,
-        //     y: 0,
-        // })
+        oldY = null;
     }
 
     _onStartShouldSetResponder(e) {
-        this.drag = {
-            x: e.nativeEvent.pageX,
-            y: e.nativeEvent.pageY
-        };
-
         return true;
     }
 

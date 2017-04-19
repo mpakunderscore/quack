@@ -62,26 +62,46 @@ export class Map extends Component {
             });
         };
 
-        map.moveOut = (x) => {
+        // map.moveOut = (x) => {
+        //
+        //     this.setState({
+        //         region: {
+        //             latitude: this.getRegion().latitude,
+        //             longitude: this.getRegion().longitude,
+        //             latitudeDelta: this.getRegion().latitudeDelta * 1.1,
+        //             longitudeDelta: this.getRegion().longitudeDelta * 1.1
+        //         }
+        //     });
+        // };
+        //
+        // map.moveIn = () => {
+        //
+        //     this.setState({
+        //         region: {
+        //             latitude: this.getRegion().latitude,
+        //             longitude: this.getRegion().longitude,
+        //             latitudeDelta: 0.005,
+        //             longitudeDelta: 0.005
+        //         }
+        //     });
+        // };
+
+        map.zoom = (bias) => {
+
+            delta *= bias;
+
+            if (delta < 0.005)
+                delta = 0.005;
+
+            if (delta > 1)
+                delta = 1;
 
             this.setState({
                 region: {
                     latitude: this.getRegion().latitude,
                     longitude: this.getRegion().longitude,
-                    latitudeDelta: this.getRegion().latitudeDelta * 1.1,
-                    longitudeDelta: this.getRegion().longitudeDelta * 1.1
-                }
-            });
-        };
-
-        map.moveIn = () => {
-
-            this.setState({
-                region: {
-                    latitude: this.getRegion().latitude,
-                    longitude: this.getRegion().longitude,
-                    latitudeDelta: 0.005,
-                    longitudeDelta: 0.005
+                    latitudeDelta: delta,
+                    longitudeDelta: delta
                 }
             });
         };
@@ -227,7 +247,7 @@ export function buildMap(map) {
     let stores = map.stores;
 }
 
-Array.prototype.place = function(obj) {
+Array.prototype.place = function (obj) {
 
     let i = this.length;
     while (i--) {
@@ -240,7 +260,7 @@ Array.prototype.place = function(obj) {
 };
 
 
-Array.prototype.remove = function(id) {
+Array.prototype.remove = function (id) {
 
     let i = this.length;
     while (i--) {
