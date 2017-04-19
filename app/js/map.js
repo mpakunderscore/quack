@@ -17,6 +17,15 @@ import {sendLocation} from './client';
 let delta = 0.005;
 // let delta = 0.05;
 
+let coin = {
+    region: {
+        latitude: 59.9547,
+        longitude: 30.3275,
+    },
+    id: "coin",
+    title: "coin",
+    description: "coin"};
+
 export let map = {};
 
 export class Map extends Component {
@@ -189,6 +198,18 @@ export class Map extends Component {
                     </MapView.Marker>
 
                 ))}
+
+                <MapView.Marker
+                    coordinate={coin.region}
+                    key={coin.id}
+                    title={coin.title}
+                    description={coin.description}
+                >
+                    <Image source={images.diamond}
+                           style={styles.mapItem}/>
+
+                </MapView.Marker>
+
             </MapView>
         );
     }

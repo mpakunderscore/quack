@@ -144,6 +144,11 @@ export const styles = StyleSheet.create({
             // zIndex: 3
         },
 
+        mapItem: {
+            width: 30,
+            height: 30
+        },
+
         gameUsers: {
             position: 'relative',
             width: gameUserWidth,
