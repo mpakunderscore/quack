@@ -19,12 +19,25 @@ let delta = 0.005;
 
 let coin = {
     region: {
-        latitude: 59.9547,
+        latitude: 59.9597,
         longitude: 30.3275,
     },
     id: "coin",
     title: "coin",
-    description: "coin"};
+    description: "coin",
+    image: images.coin
+};
+
+let save = {
+    region: {
+        latitude: 59.9507,
+        longitude: 30.3155,
+    },
+    id: "save",
+    title: "save",
+    description: "save",
+    image: images.save
+};
 
 export let map = {};
 
@@ -122,6 +135,13 @@ export class Map extends Component {
             });
         };
 
+        map.main = () => {
+
+            this.setState({
+                style: styles.map
+            });
+        };
+
         this.state = {
             style: styles.map,
             region: {
@@ -205,7 +225,18 @@ export class Map extends Component {
                     title={coin.title}
                     description={coin.description}
                 >
-                    <Image source={images.diamond}
+                    <Image source={coin.image}
+                           style={styles.mapItem}/>
+
+                </MapView.Marker>
+
+                <MapView.Marker
+                    coordinate={save.region}
+                    key={save.id}
+                    title={save.title}
+                    description={save.description}
+                >
+                    <Image source={save.image}
                            style={styles.mapItem}/>
 
                 </MapView.Marker>

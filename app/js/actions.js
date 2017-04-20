@@ -6,15 +6,21 @@ import {sendSound} from './client';
 
 import {play} from './../index';
 
+import {main} from './../index';
+
 import {Alert} from 'react-native';
 
 import {map} from './map';
+
+import {menu} from './menu';
 
 export const selfClick = () => {
 
     sendSound();
 
     // playSound();
+
+
 };
 
 export const selectClick = () => {
@@ -24,12 +30,25 @@ export const selectClick = () => {
     play();
 };
 
-export function menuClick() {
+export const mainMenu = () => {
+
+    // Alert.alert('selectClick')
+
+    main();
+};
+
+export const menuClick = () => {
 
     // Alert.alert('selectClick')
 
     // Alert.alert('Menu')
+
+    menu.modal(true)
 };
+
+export const closeModal = () => {
+    menu.modal(false)
+}
 
 export function itemsClick() {
 

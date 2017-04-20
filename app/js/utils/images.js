@@ -4,7 +4,14 @@ export const images = {
     wings: require('./../../images/wings.gif'),
     pokemon: require('./../../images/pokemon.gif'),
     money: require('./../../images/money.gif'),
-    diamond: require('./../../images/diamond.gif')
+    diamond: require('./../../images/diamond.gif'),
+    bomb: require('./../../images/bomb.png'),
+    snake: require('./../../images/snake.gif'),
+    warrior: require('./../../images/warrior.gif'),
+    shroom: require('./../../images/shroom.png'),
+    save: require('./../../images/save.png'),
+    spider: require('./../../images/spider.gif'),
+    skeleton: require('./../../images/skeleton.gif'),
 };
 
 

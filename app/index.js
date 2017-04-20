@@ -32,3 +32,9 @@ export function play() {
     map.play();
 }
 
+export function main() {
+
+    menu.main();
+    map.main();
+}
+

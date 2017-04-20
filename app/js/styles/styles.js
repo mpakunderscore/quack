@@ -32,6 +32,25 @@ export const styles = StyleSheet.create({
     button: {
         // backgroundColor: "red"
     },
+    modal: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+
+        justifyContent: 'center',
+        alignItems: 'center',
+
+        backgroundColor: 'white',
+        opacity: 0.95,
+    },
+    modalText: {
+        fontSize: 25,
+        backgroundColor: 'transparent',
+        fontFamily: font,
+        margin: 50
+    },
 
     //MAIN
 
@@ -43,10 +62,6 @@ export const styles = StyleSheet.create({
             bottom: 0,
             justifyContent: 'center',
             alignItems: 'center',
-            // backgroundColor: 'red',
-            // opacity: 1.0,
-            // opacity: 0.5,
-            // zIndex: 2
         },
         welcomeText: {
             fontFamily: font,
@@ -61,35 +76,22 @@ export const styles = StyleSheet.create({
             margin: 50
         },
         swiper: {
-            // position: 'relative',
-            // width: 250,
-            // height: 250
-            // flex: 1,
-            // justifyContent: 'center',
-            // alignItems: 'center',
-            // opacity: 0.5,
-            // backgroundColor: 'red'
         },
         swiperView: {
             flex: 1,
             justifyContent: 'center',
             alignItems: 'center',
         },
-        selectAnimalTouchable: {
-
-            // width: 250,
-            // height: 250,
-            // opacity: 0.5,
-            // backgroundColor: 'black'
-        },
         selectAnimal: {
             // position: 'relative',
             // top: 0, left: 0, right: 0, bottom: 0,
             // justifyContent: 'center', alignItems: 'center',
-            // opacity: 0.5,
-            // backgroundColor: 'green',
-            width: 250,
-            height: 250
+            opacity: 0.5,
+            backgroundColor: 'green',
+            // flex: 1,
+            // height: 250
+            // margin: 50,
+            // padding: 50
         },
         select: {
             fontFamily: font,

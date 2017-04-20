@@ -3,14 +3,17 @@ import {View, Text, Image, Alert, TouchableHighlight, TouchableOpacity} from 're
 
 import Swiper from 'react-native-swiper';
 
+import {Modal} from './utils/modal';
+
 import {styles} from './styles/styles';
 import {texts} from './utils/texts';
 import {images} from './utils/images';
 
 import {selfClick} from './actions';
 import {selectClick} from './actions';
-import {menuClick} from './actions';
 import {itemsClick} from './actions';
+import {menuClick} from './actions';
+import {closeModal} from './actions';
 // import {moveOut} from './actions';
 // import {moveIn} from './actions';
 import {zoom} from './actions';
@@ -26,6 +29,12 @@ export class Menu extends Component {
         menu.play = () => {
             this.setState({
                 main: 'play'
+            });
+        };
+
+        menu.main = () => {
+            this.setState({
+                main: 'main'
             });
         };
 
@@ -54,6 +63,51 @@ export class Menu extends Component {
 }
 
 export class MainMenu extends Component {
+
+    constructor(props) {
+
+        super(props);
+
+        this.state = {
+            characters: [
+                // {
+                //     image: images.goose,
+                //     id: "goose",
+                //     width: 220,
+                //     height: 220,
+                //     text: "Quack"
+                // },
+                {
+                    image: images.warrior,
+                    id: "warrior",
+                    width: 300,
+                    height: 360,
+                    text: "ARRRR!!!"},
+                // {
+                //     image: images.bomb,
+                //     id: "bomb",
+                //     width: 100,
+                //     height: 100,
+                //     text: "BOM!"
+                // },
+                {
+                    image: images.spider,
+                    id: "spider",
+                    width: 260,
+                    height: 180,
+                    text: "Man"
+                },
+                {
+                    image: images.skeleton,
+                    id: "skeleton",
+                    width: 200,
+                    height: 200,
+                    text: "Supporting"
+                },
+            ]
+        };
+    }
+
     render() {
         return (
             <View style={styles.menu}>
@@ -64,35 +118,31 @@ export class MainMenu extends Component {
 
                 <Swiper style={styles.swiper}
                         showsButtons={false}
-                        showsPagination={false}>
+                        showsPagination={false}
+                        autoplay={true}>
 
-                    <View style={styles.swiperView}>
-                        <TouchableOpacity
-                            onPress={selectClick}
-                            style={styles.selectAnimalTouchable}>
-                            <Image
-                                style={styles.selectAnimal}
-                                source={images.goose}
-                            />
-                        </TouchableOpacity>
-                    </View>
+                    {this.state.characters.map(character => (
 
-                    <View style={styles.swiperView}>
-                        <TouchableOpacity
-                            onPress={selectClick}
-                            style={styles.selectAnimalTouchable}>
-                            <Image
-                                style={styles.selectAnimal}
-                                source={images.goose}
-                            />
-                        </TouchableOpacity>
-                    </View>
+                        <View style={styles.swiperView}
+                              key={character.id}>
+
+                            <TouchableOpacity
+                                onPress={selectClick}>
+                                <Image
+                                    style={{width: character.width, height: character.height}}
+                                    source={character.image}
+                                />
+                            </TouchableOpacity>
+
+                            <Text style={styles.select}>
+                                {character.text}
+                            </Text>
+
+                        </View>
+
+                    ))}
 
                 </Swiper>
-
-                <Text style={styles.select}>
-                    {texts.ok}
-                </Text>
 
             </View>
         );
@@ -102,6 +152,21 @@ export class MainMenu extends Component {
 let oldY = null;
 
 export class GameMenu extends Component {
+
+    constructor(props) {
+
+        super(props);
+
+        menu.modal = (val) => {
+            this.setState({
+                modal: val
+            });
+        };
+
+        this.state = {
+            modal: false
+        };
+    }
 
     onMove(e) {
 
@@ -139,32 +204,37 @@ export class GameMenu extends Component {
                 <TouchableOpacity
                     onPress={selfClick}
                     style={styles.gameUserTouchable}>
+
                     <Image
                         style={styles.gameUser}
                         source={images.goose}
                     />
+
                 </TouchableOpacity>
+
                 <BottomMenu/>
+
+                { this.state.modal && <Modal/>}
 
             </View>
         );
     }
 }
 
-export class BottomMenu extends Component {
+class BottomMenu extends Component {
     render() {
         return (
             <View style={styles.userMenu}>
 
-                <TouchableOpacity onPress={itemsClick()}
+                <TouchableOpacity onPress={itemsClick}
                                   style={styles.button}>
                     <Text style={styles.userMenuText}>
                         {texts.items}
                     </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={menuClick()}
-                                    style={styles.button}>
+                <TouchableOpacity onPress={menuClick}
+                                  style={styles.button}>
                     <Text style={styles.userMenuText}>
                         {texts.menu}
                     </Text>
@@ -175,7 +245,7 @@ export class BottomMenu extends Component {
     }
 }
 
-export class Error extends Component {
+class Error extends Component {
     render() {
         return (
             <View style={styles.userMenu}>
