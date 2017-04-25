@@ -79,15 +79,21 @@ export const styles = StyleSheet.create({
         },
         swiperView: {
             flex: 1,
+            // position: 'absolute',
+            // bottom: 50,
+            // flexDirection: 'column',
+            // justifyContent: 'space-between',
             justifyContent: 'center',
             alignItems: 'center',
+            // backgroundColor: 'green',
+            // opacity: 0.5
         },
         selectAnimal: {
             // position: 'relative',
             // top: 0, left: 0, right: 0, bottom: 0,
             // justifyContent: 'center', alignItems: 'center',
-            opacity: 0.5,
-            backgroundColor: 'green',
+            // opacity: 0.5,
+            // backgroundColor: 'green',
             // flex: 1,
             // height: 250
             // margin: 50,

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Quack city</title>
+
+    <link rel="icon"
+          type="image/png"
+          href="./favicon.png">
+
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzRMWRDlblZz0atUJT2r8kJO_Ur7f-TCI&callback=initMap">
+    </script>
+
+    <script src="./socket.io.slim.js"></script>
+
+    <script src="./index.js"></script>
+    <script src="./client.js"></script>
+
+    <style>
+        html, body { width: 100%; height: 100%; margin: 0; }
+        #map {
+            width: 100%;
+            height: 100%
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="map"></div>
+
+</body>
+</html>

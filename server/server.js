@@ -4,18 +4,24 @@ let express = require('express');
 let http = require('http');
 let socketio = require('socket.io');
 
+let connect = require('connect');
+let serveStatic = require('serve-static');
+
 let app = express();
 let server = http.Server(app);
 let websocket = socketio(server);
 
-let port = 3000;
+const port = 3000;
+const webPort = 8080;
 
 let map = {
     users: {},
     places: []
 };
 
-server.listen(port, () => console.log('listening: ' + port));
+web();
+
+server.listen(port, () => console.log('socket listening on: ' + port));
 
 websocket.on('connection', (socket) => {
 
@@ -84,6 +90,15 @@ function receiveLocation(socket, region) {
 // }
 //
 // setTimeout(checkUsers, 5000);
+
+function web() {
+
+    connect().use('/', serveStatic(__dirname + '/web')).listen(webPort, function () {
+
+        // console.log(__dirname)
+        console.log('web running on: ' + webPort);
+    });
+}
 
 Array.prototype.place = function(obj) {
 

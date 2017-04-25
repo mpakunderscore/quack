@@ -70,19 +70,27 @@ export class MainMenu extends Component {
 
         this.state = {
             characters: [
-                // {
-                //     image: images.goose,
-                //     id: "goose",
-                //     width: 220,
-                //     height: 220,
-                //     text: "Quack"
-                // },
                 {
-                    image: images.warrior,
-                    id: "warrior",
-                    width: 300,
-                    height: 360,
-                    text: "ARRRR!!!"},
+                    image: images.goose,
+                    id: "goose",
+                    width: 220,
+                    height: 220,
+                    text: "Quack"
+                },
+                {
+                    image: images.goose,
+                    id: "goose",
+                    width: 220,
+                    height: 220,
+                    text: "Quack"
+                },
+                // {
+                //     image: images.warrior,
+                //     id: "warrior",
+                //     width: 200*1.2,
+                //     height: 240*1.2,
+                //     text: "ARRRR!!!"
+                // },
                 // {
                 //     image: images.bomb,
                 //     id: "bomb",
@@ -90,20 +98,20 @@ export class MainMenu extends Component {
                 //     height: 100,
                 //     text: "BOM!"
                 // },
-                {
-                    image: images.spider,
-                    id: "spider",
-                    width: 260,
-                    height: 180,
-                    text: "Man"
-                },
-                {
-                    image: images.skeleton,
-                    id: "skeleton",
-                    width: 200,
-                    height: 200,
-                    text: "Supporting"
-                },
+                // {
+                //     image: images.spider,
+                //     id: "spider",
+                //     width: 132*1.4,
+                //     height: 90*1.4,
+                //     text: "Man"
+                // },
+                // {
+                //     image: images.skeleton,
+                //     id: "skeleton",
+                //     width: 150*1.2,
+                //     height: 150*1.2,
+                //     text: "Supporting"
+                // },
             ]
         };
     }
