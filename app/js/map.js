@@ -73,8 +73,9 @@ export class Map extends Component {
 
             let place = markers.place({id: id});
 
+            //TODO check this, may be bug
             if (place > -1)
-                markers = markers.remove(id);
+                markers.remove(id);
 
             // console.log('markers');
             // console.log(markers);

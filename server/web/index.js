@@ -1,11 +1,13 @@
 //'59.9547';
 //'30.3275';
 
+let map;
+let markers = [];
 
 function initMap() {
 
     const city = {lat: 59.9547, lng: 30.3275};
-    let map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
         center: city
     });
@@ -16,7 +18,7 @@ function initMap() {
     // });
 }
 
-export function buildMap(map) {
+function buildWebMap(map) {
 
     //
 
@@ -46,7 +48,9 @@ export function buildMap(map) {
     let stores = map.stores;
 }
 
-export function placeUser(region) {
+function placeUser(region) {
+
+    console.log('place user: ' + region.id)
 
     let user = {
         id: region.id,
@@ -58,28 +62,59 @@ export function placeUser(region) {
         description: 'user'
     };
 
-    map.setUser(user);
-
-    // console.log('user');
-    // console.log(user)
-}
-
-map.setUser = (user) => {
-
-    let markers = this.getMarkers();
+    let position = {lat: user.region.latitude, lng: user.region.longitude};
 
     let place = markers.place(user);
 
-    if (place > -1)
-        markers[place] = user;
+    if (place > -1) {
 
-    else
+        markers[place].region = user.region;
+        markers[place].marker.position = position;
+
+    } else {
+
+        user.marker = new google.maps.Marker({
+            position: position,
+            map: map
+        });
+
         markers.push(user);
+    }
+}
 
-    // console.log('markers');
-    // console.log(markers);
+function removeUser(id) {
 
-    this.setState({
-        markers: markers
-    });
+    console.log('remove user: ' + id)
+
+    let place = markers.place({id: id});
+
+    if (place > -1) {
+
+        markers[place].marker.setMap(null);
+        markers.remove(place);
+    }
+}
+
+Array.prototype.place = function (obj) {
+
+    let i = this.length;
+    while (i--) {
+
+        if (this[i].id == obj.id) {
+            return i;
+        }
+    }
+    return -1;
+};
+
+
+Array.prototype.remove = function (id) {
+
+    let i = this.length;
+    while (i--) {
+
+        if (this[i].id == id) {
+            this.splice(i, 1);
+        }
+    }
 };

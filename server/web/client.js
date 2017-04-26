@@ -39,13 +39,13 @@ socket.on('sound', (message) => {
 });
 
 socket.on('map', (map) => {
-    buildMap(JSON.parse(map));
+    buildWebMap(JSON.parse(map));
 });
 
 socket.on('location', (region) => {
-    // placeUser(JSON.parse(region));
+    placeUser(JSON.parse(region));
 });
 
-socket.on('disconnect', (id) => {
-    // removeUser(id);
+socket.on('disconnected', (id) => {
+    removeUser(id);
 });

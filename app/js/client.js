@@ -38,6 +38,6 @@ socket.on('location', (region) => {
     placeUser(JSON.parse(region));
 });
 
-socket.on('disconnect', (id) => {
+socket.on('disconnected', (id) => {
     removeUser(id);
 });

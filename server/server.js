@@ -38,11 +38,11 @@ websocket.on('connection', (socket) => {
 
 function removeUser(socket) {
 
-    console.log('disconnect: ' + socket.id);
+    console.log('disconnected: ' + socket.id);
 
     delete map.users[socket.id];
 
-    socket.broadcast.emit('disconnect', socket.id);
+    socket.broadcast.emit('disconnected', socket.id);
 }
 
 function receiveSound(socket, message) {
