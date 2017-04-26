@@ -86,7 +86,7 @@ function placeUser(region) {
     } else {
 
         let image = {
-            url: 'favicon.png',
+            url: './images/favicon.png',
             // This marker is 20 pixels wide by 32 pixels high.
             // size: new google.maps.Size(250, 250),
             // The origin for this image is (0, 0).
