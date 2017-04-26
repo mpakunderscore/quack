@@ -9,8 +9,17 @@ function initMap() {
     const city = {lat: 59.9547, lng: 30.3275};
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
-        center: city
+        center: city,
+        mapTypeId: 'mapStyle',
+
+        mapTypeControl: false,
+        streetViewControl: false,
+        rotateControl: false,
+        fullscreenControl: true
     });
+
+    map.mapTypes.set('mapStyle', new google.maps.StyledMapType(mapStyle, { name: 'Map style' }));
+
 
     // var marker = new google.maps.Marker({
     //     position: city,
@@ -66,10 +75,13 @@ function placeUser(region) {
 
     let place = markers.place(user);
 
+    //update user
     if (place > -1) {
 
         markers[place].region = user.region;
-        markers[place].marker.position = position;
+
+        // const latlng = new google.maps.LatLng(-24.397, 140.644);
+        markers[place].marker.setPosition(position);
 
     } else {
 
