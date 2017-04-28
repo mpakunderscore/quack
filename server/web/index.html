@@ -1,30 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
 
-    <meta charset="UTF-8">
-    <title>Quack city</title>
+        <meta charset="UTF-8">
+        <title>Quack city</title>
 
-    <link rel="icon"
-          type="image/png"
-          href="images/favicon.png">
+        <link rel="icon"
+              type="image/png"
+              href="images/favicon.png">
 
-    <link rel="stylesheet" type="text/css" href="index.css">
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzRMWRDlblZz0atUJT2r8kJO_Ur7f-TCI&callback=initMap">
-    </script>
+        <link rel="stylesheet" type="text/css" href="index.css">
 
-    <script src="./socket.io.slim.js"></script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzRMWRDlblZz0atUJT2r8kJO_Ur7f-TCI&callback=initMap">
+        </script>
 
-    <script src="./index.js"></script>
-    <script src="./client.js"></script>
-    <script src="./style.js"></script>
+        <script src="js/socket.io.slim.js"></script>
 
-</head>
-<body>
+        <script src="js/map.js"></script>
+        <script src="js/client.js"></script>
+        <script src="js/style.js"></script>
 
-    <div id="map"></div>
+    </head>
 
-</body>
+    <body>
+
+        <div id="title">Quack city</div>
+
+        <div id="map"></div>
+
+    </body>
 </html>
