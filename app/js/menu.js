@@ -78,11 +78,11 @@ export class MainMenu extends Component {
                     text: "Quack"
                 },
                 {
-                    image: images.goose,
-                    id: "goose",
+                    image: images.cyber,
+                    id: "cyber",
                     width: 220,
                     height: 220,
-                    text: "Quack"
+                    text: "Cyber"
                 },
                 // {
                 //     image: images.warrior,
@@ -127,7 +127,7 @@ export class MainMenu extends Component {
                 <Swiper style={styles.swiper}
                         showsButtons={false}
                         showsPagination={false}
-                        autoplay={true}>
+                        autoplay={false}>
 
                     {this.state.characters.map(character => (
 
