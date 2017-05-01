@@ -17,6 +17,7 @@ import {closeModal} from './actions';
 // import {moveOut} from './actions';
 // import {moveIn} from './actions';
 import {zoom} from './actions';
+import {characters} from './utils/characters';
 
 export let menu = {};
 
@@ -69,50 +70,7 @@ export class MainMenu extends Component {
         super(props);
 
         this.state = {
-            characters: [
-                {
-                    image: images.goose,
-                    id: "goose",
-                    width: 220,
-                    height: 220,
-                    text: "Quack"
-                },
-                {
-                    image: images.cyber,
-                    id: "cyber",
-                    width: 220,
-                    height: 220,
-                    text: "Cyber"
-                },
-                // {
-                //     image: images.warrior,
-                //     id: "warrior",
-                //     width: 200*1.2,
-                //     height: 240*1.2,
-                //     text: "ARRRR!!!"
-                // },
-                // {
-                //     image: images.bomb,
-                //     id: "bomb",
-                //     width: 100,
-                //     height: 100,
-                //     text: "BOM!"
-                // },
-                // {
-                //     image: images.spider,
-                //     id: "spider",
-                //     width: 132*1.4,
-                //     height: 90*1.4,
-                //     text: "Man"
-                // },
-                // {
-                //     image: images.skeleton,
-                //     id: "skeleton",
-                //     width: 150*1.2,
-                //     height: 150*1.2,
-                //     text: "Supporting"
-                // },
-            ]
+            characters: characters
         };
     }
 

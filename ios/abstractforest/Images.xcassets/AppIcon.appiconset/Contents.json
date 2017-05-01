@@ -33,13 +33,13 @@
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "goos11e2-120.png",
+      "filename" : "goose120.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "goos11e2-180.png",
+      "filename" : "goose180.png",
       "scale" : "3x"
     }
   ],
