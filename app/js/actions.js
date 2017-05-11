@@ -18,7 +18,7 @@ export const selfClick = () => {
 
     sendSound();
 
-    // playSound();
+    playSound();
 
 
 };

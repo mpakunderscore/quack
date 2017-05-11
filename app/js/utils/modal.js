@@ -28,9 +28,9 @@ export class Modal extends Component {
 
                 <View style={styles.userMenu}>
 
-                    <TouchableOpacity onPress={mainMenu}>
+                    <TouchableOpacity onPress={closeModal}>
                         <Text style={styles.userMenuText}>
-                            Choose
+                            Close
                         </Text>
                     </TouchableOpacity>
 

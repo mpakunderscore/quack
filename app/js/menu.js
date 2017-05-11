@@ -13,6 +13,7 @@ import {selfClick} from './actions';
 import {selectClick} from './actions';
 import {itemsClick} from './actions';
 import {menuClick} from './actions';
+import {mainMenu} from './actions';
 import {closeModal} from './actions';
 // import {moveOut} from './actions';
 // import {moveIn} from './actions';
@@ -85,7 +86,8 @@ export class MainMenu extends Component {
                 <Swiper style={styles.swiper}
                         showsButtons={false}
                         showsPagination={false}
-                        autoplay={false}>
+                        autoplay={true}
+                        autoplayTimeout={10}>
 
                     {this.state.characters.map(character => (
 
@@ -192,10 +194,10 @@ class BottomMenu extends Component {
         return (
             <View style={styles.userMenu}>
 
-                <TouchableOpacity onPress={itemsClick}
+                <TouchableOpacity onPress={mainMenu}
                                   style={styles.button}>
                     <Text style={styles.userMenuText}>
-                        {texts.items}
+                        Choose
                     </Text>
                 </TouchableOpacity>
 

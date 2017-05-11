@@ -1,15 +1,17 @@
 {
   "name": "quack",
-  "version": "0.2",
+  "version": "0.2.5",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "start": "node ./node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "server": "nodemon server"
+    "server": "node ./server/server.js start"
   },
   "dependencies": {
     "express": "^4.15.2",
     "nodemon": "^1.11.0",
+    "pg": "^6.1.5",
+    "pg-hstore": "^2.3.2",
     "react": "15.4.2",
     "react-native": "0.42.3",
     "react-native-gps": "^0.1.1",
@@ -18,11 +20,14 @@
     "react-native-sound": "^0.9.1",
     "react-native-swiper": "^1.5.4",
     "react-native-touch-gestures": "^1.1.1",
+    "sequelize": "^3.30.4",
     "socket.io": "^1.7.3",
     "socket.io-client": "^1.7.3"
   },
   "devDependencies": {
     "babel-jest": "19.0.0",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-react-native": "1.9.1",
     "jest": "19.0.2",
     "react-test-renderer": "15.4.2"
