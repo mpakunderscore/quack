@@ -3,11 +3,11 @@ let serveStatic = require('serve-static');
 
 const webPort = 8080;
 
-web = function () {
+exports.run = function () {
 
     connect().use('/', serveStatic(__dirname + '/web')).listen(webPort, function () {
 
         // console.log(__dirname)
-        console.log('web running on: ' + webPort);
+        console.log('Web running on: ' + webPort);
     });
 }

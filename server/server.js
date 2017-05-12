@@ -1,14 +1,9 @@
 //SERVER
 
-require('./database.js');
-require('./web.js');
-require('./socket.js');
+let database = require('./database.js');
+let web = require('./web.js');
+let socket = require('./socket.js');
 
-let map = {
-    users: {},
-    places: []
-};
-
-database();
-web();
-socket();
+database.run();
+web.run();
+socket.run();

@@ -11,7 +11,7 @@ let sequelize = new Sequelize('template1', 'postgres', '', {
     },
 });
 
-database = function () {
+exports.run = function () {
 
     sequelize
         .authenticate()

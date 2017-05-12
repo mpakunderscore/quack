@@ -9,9 +9,14 @@ let websocket = socketio(server);
 
 const socketPort = 3000;
 
-socket = function () {
+let map = {
+    users: {},
+    places: []
+};
 
-    server.listen(socketPort, () => console.log('socket listening on: ' + socketPort));
+exports.run = function () {
+
+    server.listen(socketPort, () => console.log('Socket listening on: ' + socketPort));
 
     websocket.on('connection', (socket) => {
 
