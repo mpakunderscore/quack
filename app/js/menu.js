@@ -85,9 +85,10 @@ export class MainMenu extends Component {
 
                 <Swiper style={styles.swiper}
                         showsButtons={false}
-                        showsPagination={false}
+                        showsPagination={true}
                         autoplay={true}
-                        autoplayTimeout={10}>
+                        autoplayTimeout={10}
+                        activeDotColor={"gray"}>
 
                     {this.state.characters.map(character => (
 
@@ -182,7 +183,7 @@ export class GameMenu extends Component {
 
                 <BottomMenu/>
 
-                { this.state.modal && <Modal/>}
+                {this.state.modal && <Modal/>}
 
             </View>
         );

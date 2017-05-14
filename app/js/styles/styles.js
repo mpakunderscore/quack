@@ -104,7 +104,7 @@ export const styles = StyleSheet.create({
             position: 'absolute',
             right: 0,
             left: 0,
-            bottom: 50,
+            bottom: 100,
             justifyContent: 'center',
             backgroundColor: 'transparent',
             fontSize: fontSize,

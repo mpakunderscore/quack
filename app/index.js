@@ -8,10 +8,6 @@ import {map} from './js/map';
 import {Menu} from './js/menu';
 import {menu} from './js/menu';
 
-// import {MainMenu} from './js/menu';
-// import {GameMenu} from './js/menu';
-// import {Error} from './js/menu';
-
 import {styles} from './js/styles/styles';
 
 export class Index extends Component {

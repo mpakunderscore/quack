@@ -17,28 +17,6 @@ import {sendLocation} from './client';
 let delta = 0.005;
 // let delta = 0.05;
 
-let coin = {
-    region: {
-        latitude: 59.9597,
-        longitude: 30.3275,
-    },
-    id: "coin",
-    title: "coin",
-    description: "coin",
-    image: images.coin
-};
-
-let save = {
-    region: {
-        latitude: 59.9507,
-        longitude: 30.3155,
-    },
-    id: "save",
-    title: "save",
-    description: "save",
-    image: images.save
-};
-
 export let map = {};
 
 export class Map extends Component {
@@ -59,9 +37,6 @@ export class Map extends Component {
             else
                 markers.push(user);
 
-            // console.log('markers');
-            // console.log(markers);
-
             this.setState({
                 markers: markers
             });
@@ -77,37 +52,10 @@ export class Map extends Component {
             if (place > -1)
                 markers.remove(id);
 
-            // console.log('markers');
-            // console.log(markers);
-
             this.setState({
                 markers: markers
             });
         };
-
-        // map.moveOut = (x) => {
-        //
-        //     this.setState({
-        //         region: {
-        //             latitude: this.getRegion().latitude,
-        //             longitude: this.getRegion().longitude,
-        //             latitudeDelta: this.getRegion().latitudeDelta * 1.1,
-        //             longitudeDelta: this.getRegion().longitudeDelta * 1.1
-        //         }
-        //     });
-        // };
-        //
-        // map.moveIn = () => {
-        //
-        //     this.setState({
-        //         region: {
-        //             latitude: this.getRegion().latitude,
-        //             longitude: this.getRegion().longitude,
-        //             latitudeDelta: 0.005,
-        //             longitudeDelta: 0.005
-        //         }
-        //     });
-        // };
 
         map.zoom = (bias) => {
 
@@ -161,6 +109,8 @@ export class Map extends Component {
 
         navigator.geolocation.watchPosition(this.setLocation, (error) => {
 
+
+
             }, {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
         );
     }
@@ -181,10 +131,6 @@ export class Map extends Component {
             latitudeDelta: delta,
             longitudeDelta: delta
         };
-
-        // console.log('region')
-        // console.log(region)
-        // console.log(this.getRegion())
 
         //TODO
         if (region === this.getRegion())
@@ -220,28 +166,6 @@ export class Map extends Component {
 
                 ))}
 
-                <MapView.Marker
-                    coordinate={coin.region}
-                    key={coin.id}
-                    title={coin.title}
-                    description={coin.description}
-                >
-                    <Image source={coin.image}
-                           style={styles.mapItem}/>
-
-                </MapView.Marker>
-
-                <MapView.Marker
-                    coordinate={save.region}
-                    key={save.id}
-                    title={save.title}
-                    description={save.description}
-                >
-                    <Image source={save.image}
-                           style={styles.mapItem}/>
-
-                </MapView.Marker>
-
             </MapView>
         );
     }
@@ -260,9 +184,6 @@ export function placeUser(region) {
     };
 
     map.setUser(user);
-
-    // console.log('user');
-    // console.log(user)
 }
 
 
@@ -272,15 +193,7 @@ export function removeUser(id) {
 
 export function buildMap(map) {
 
-    //
-
-    // let testRegion = {
-    //     id: '0',
-    //     latitude: 59.9537,
-    //     longitude: 30.3275,
-    // };
-
-    let home = map.home;
+    // let home = map.home;
 
     let users = map.users;
 
@@ -291,13 +204,9 @@ export function buildMap(map) {
         placeUser(users[id]);
     }
 
-    // users.map(user => {
-    //     placeUser(user);
-    // });
+    // let items = map.items;
 
-    let items = map.items;
-
-    let stores = map.stores;
+    // let stores = map.stores;
 }
 
 Array.prototype.place = function (obj) {

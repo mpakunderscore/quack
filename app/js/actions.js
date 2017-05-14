@@ -48,14 +48,14 @@ export const menuClick = () => {
 
 export const closeModal = () => {
     menu.modal(false)
-}
+};
 
 export function itemsClick() {
 
     // Alert.alert('selectClick')
 
     // Alert.alert('Items')
-};
+}
 
 export const alert = () => {
 
