@@ -22,7 +22,9 @@ export class Index extends Component {
     }
 }
 
-export function play() {
+export function play(image) {
+
+    menu.image = image;
 
     menu.play();
     map.play();
@@ -33,4 +35,12 @@ export function main() {
     menu.main();
     map.main();
 }
+
+menu.setImage = (image) => {
+    this.setState({
+        image: image
+    });
+};
+
+
 

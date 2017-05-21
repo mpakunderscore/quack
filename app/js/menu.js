@@ -97,7 +97,7 @@ export class MainMenu extends Component {
                               key={character.id}>
 
                             <TouchableOpacity
-                                onPress={() => selectClick(character.id)}>
+                                onPress={() => selectClick(character.image)}>
                                 <Image
                                     style={{width: character.width, height: character.height}}
                                     source={character.image}
@@ -137,15 +137,9 @@ export class GameMenu extends Component {
             });
         };
 
-        menu.image = (val) => {
-            // this.setState({
-            //     image: val
-            // });
-        };
-
         this.state = {
             modal: false,
-            image: images.cyber
+            image: menu.image
         };
     }
 

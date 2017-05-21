@@ -8,6 +8,8 @@ import {play} from './../index';
 
 import {main} from './../index';
 
+// import {setDuck} from './menu';
+
 import {Alert} from 'react-native';
 
 import {map} from './map';
@@ -21,21 +23,12 @@ export const selfClick = () => {
     playSound();
 };
 
-export const selectClick = (id) => {
+export const selectClick = (image) => {
 
     // Alert.alert('selectClick')
 
-    menu.image(id);
-
-    play();
+    play(image);
 }
-
-export const mainMenu = () => {
-
-    // Alert.alert('selectClick')
-
-    main();
-};
 
 export const menuClick = () => {
 
@@ -56,6 +49,13 @@ export function itemsClick() {
 
     // Alert.alert('Items')
 }
+
+export const mainMenu = () => {
+
+    // Alert.alert('selectClick')
+
+    main();
+};
 
 export const alert = () => {
 
