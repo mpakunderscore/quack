@@ -10,7 +10,7 @@ function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
         center: city,
-        mapTypeId: 'mapStyle',
+        // mapTypeId: 'mapStyle',
 
         mapTypeControl: false,
         streetViewControl: false,
