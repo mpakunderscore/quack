@@ -13,11 +13,6 @@ export class Modal extends Component {
                     Nothing
                 </Text>
 
-                <TextInput
-                    style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-                    onChangeText={(text) => this.setState({text})}
-                />
-
                 <View style={styles.userMenu}>
 
                     {/*<TouchableOpacity onPress={closeModal}>*/}

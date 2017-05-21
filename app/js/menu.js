@@ -4,6 +4,7 @@ import {View, Text, Image, Alert, TouchableHighlight, TouchableOpacity} from 're
 import Swiper from 'react-native-swiper';
 
 import {Modal} from './utils/modal';
+import {Note} from './utils/note';
 
 import {styles} from './styles/styles';
 import {texts} from './utils/texts';
@@ -79,13 +80,13 @@ export class MainMenu extends Component {
         return (
             <View style={styles.menu}>
 
-                <Text style={styles.welcomeText}>
-                    {texts.welcome}
-                </Text>
+                {/*<Text style={styles.welcomeText}>*/}
+                    {/*{texts.welcome}*/}
+                {/*</Text>*/}
 
                 <Swiper style={styles.swiper}
                         showsButtons={false}
-                        showsPagination={true}
+                        showsPagination={false}
                         autoplay={true}
                         autoplayTimeout={10}
                         activeDotColor={"gray"}>
@@ -96,16 +97,20 @@ export class MainMenu extends Component {
                               key={character.id}>
 
                             <TouchableOpacity
-                                onPress={selectClick}>
+                                onPress={() => selectClick(character.id)}>
                                 <Image
                                     style={{width: character.width, height: character.height}}
                                     source={character.image}
                                 />
                             </TouchableOpacity>
 
-                            <Text style={styles.select}>
-                                {character.text}
+                            <Text style={styles.textData}>
+                                {character.data}
                             </Text>
+
+                            {/*<Text style={styles.select}>*/}
+                                {/*{character.text}*/}
+                            {/*</Text>*/}
 
                         </View>
 
@@ -132,8 +137,15 @@ export class GameMenu extends Component {
             });
         };
 
+        menu.image = (val) => {
+            // this.setState({
+            //     image: val
+            // });
+        };
+
         this.state = {
-            modal: false
+            modal: false,
+            image: images.cyber
         };
     }
 
@@ -176,7 +188,7 @@ export class GameMenu extends Component {
 
                     <Image
                         style={styles.gameUser}
-                        source={images.goose}
+                        source={this.state.image}
                     />
 
                 </TouchableOpacity>
@@ -184,6 +196,8 @@ export class GameMenu extends Component {
                 <BottomMenu/>
 
                 {this.state.modal && <Modal/>}
+
+                {this.state.modal === 'note' && <Note/>}
 
             </View>
         );
@@ -202,12 +216,12 @@ class BottomMenu extends Component {
                     </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={menuClick}
-                                  style={styles.button}>
-                    <Text style={styles.userMenuText}>
-                        {texts.menu}
-                    </Text>
-                </TouchableOpacity>
+                {/*<TouchableOpacity onPress={menuClick}*/}
+                                  {/*style={styles.button}>*/}
+                    {/*<Text style={styles.userMenuText}>*/}
+                        {/*{texts.menu}*/}
+                    {/*</Text>*/}
+                {/*</TouchableOpacity>*/}
 
             </View>
         );

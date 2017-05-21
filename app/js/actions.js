@@ -19,16 +19,16 @@ export const selfClick = () => {
     sendSound();
 
     playSound();
-
-
 };
 
-export const selectClick = () => {
+export const selectClick = (id) => {
 
     // Alert.alert('selectClick')
 
+    menu.image(id);
+
     play();
-};
+}
 
 export const mainMenu = () => {
 

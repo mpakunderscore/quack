@@ -104,7 +104,6 @@ export class Map extends Component {
 
         this.setLocation = this.setLocation.bind(this);
         this.getRegion = this.getRegion.bind(this);
-
         this.getMarkers = this.getMarkers.bind(this);
 
         navigator.geolocation.watchPosition(this.setLocation, (error) => {

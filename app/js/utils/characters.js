@@ -2,6 +2,14 @@ import {images} from './images';
 
 export const characters = [
     {
+        image: null,
+        id: "text",
+        // width: 220,
+        // height: 220,
+        // text: ""
+        data: "At your disposal a set of ducks. With unique abilities in each. New can be obtained in various ways. To get some, you have to go through a lot. Good duck."
+    },
+    {
         image: images.goose,
         id: "goose",
         width: 220,

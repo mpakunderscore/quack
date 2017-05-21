@@ -1,4 +1,4 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet, PixelRatio} from 'react-native';
 
 let { height, width } = Dimensions.get('window');
 
@@ -88,6 +88,18 @@ export const styles = StyleSheet.create({
             // backgroundColor: 'green',
             // opacity: 0.5
         },
+        textData: {
+            fontFamily: font,
+            position: 'absolute',
+            // right: 0,
+            // left: 0,
+            // bottom: 50,
+            justifyContent: 'center',
+            backgroundColor: 'transparent',
+            fontSize: PixelRatio.getPixelSizeForLayoutSize(12),
+            textAlign: 'center',
+            margin: 50
+        },
         selectAnimal: {
             // position: 'relative',
             // top: 0, left: 0, right: 0, bottom: 0,
@@ -104,7 +116,7 @@ export const styles = StyleSheet.create({
             position: 'absolute',
             right: 0,
             left: 0,
-            bottom: 100,
+            bottom: 50,
             justifyContent: 'center',
             backgroundColor: 'transparent',
             fontSize: fontSize,
@@ -181,6 +193,8 @@ export const styles = StyleSheet.create({
             fontSize: 25,
             backgroundColor: 'transparent',
             fontFamily: font,
+            // flex: 1,
+            // alignItems: 'right',
             // color: 'gray'
         }
 });
