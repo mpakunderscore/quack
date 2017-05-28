@@ -2,7 +2,11 @@
 
 import {sound} from './utils/sound';
 
+import {speakF} from './utils/speech';
+
 import {sendSound} from './client';
+
+import {sendText} from './client';
 
 import {play} from './../index';
 
@@ -18,14 +22,31 @@ import {menu} from './menu';
 
 export const selfClick = () => {
 
-    sendSound();
+    if (menu.id === "goose") {
 
-    playSound();
+        sendSound();
+        playSound();
+    }
+
+    if (menu.id === "cyber") {
+        menu.modal(true);
+        menu.edit = true;
+    }
 };
 
-export const selectClick = (image) => {
+export const speak = (text) => {
+
+    sendText(text);
+    speakF(text)
+    // let text = "Проверка"
+}
+
+export const selectClick = (image, id, index) => {
 
     // Alert.alert('selectClick')
+
+    menu.id = id;
+    menu.index = index;
 
     play(image);
 }

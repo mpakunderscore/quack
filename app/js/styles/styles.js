@@ -18,15 +18,29 @@ export let gameUsersWidth = gameUserWidth;
 export const styles = StyleSheet.create({
 
     container: {
-        flex: 1,
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
         backgroundColor: 'white'
     },
     map: {
-        flex: 1,
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
         opacity: 0.2,
     },
     gameMap: {
-        flex: 1,
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
         opacity: 0.7,
     },
     button: {
@@ -39,11 +53,18 @@ export const styles = StyleSheet.create({
         top: 0,
         bottom: 0,
 
-        justifyContent: 'center',
-        alignItems: 'center',
+        // justifyContent: 'center',
+        // alignItems: 'center',
 
         backgroundColor: 'white',
         opacity: 0.95,
+    },
+    input: {
+        height: 25,
+        borderColor: 'gray',
+        borderWidth: 0,
+        margin: 50,
+        backgroundColor: 'transparent',
     },
     modalText: {
         fontSize: 25,

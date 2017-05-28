@@ -108,8 +108,6 @@ export class Map extends Component {
 
         navigator.geolocation.watchPosition(this.setLocation, (error) => {
 
-
-
             }, {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
         );
     }

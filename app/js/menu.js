@@ -23,6 +23,8 @@ import {characters} from './utils/characters';
 
 export let menu = {};
 
+menu.index = 1;
+
 export class Menu extends Component {
 
     constructor(props) {
@@ -87,17 +89,18 @@ export class MainMenu extends Component {
                 <Swiper style={styles.swiper}
                         showsButtons={false}
                         showsPagination={false}
-                        autoplay={true}
-                        autoplayTimeout={10}
+                        autoplay={false}
+                        index={menu.index}
+                        autoplayTimeout={15}
                         activeDotColor={"gray"}>
 
-                    {this.state.characters.map(character => (
+                    {this.state.characters.map((character, index) => (
 
                         <View style={styles.swiperView}
                               key={character.id}>
 
                             <TouchableOpacity
-                                onPress={() => selectClick(character.image)}>
+                                onPress={() => selectClick(character.image, character.id, index)}>
                                 <Image
                                     style={{width: character.width, height: character.height}}
                                     source={character.image}
@@ -178,6 +181,7 @@ export class GameMenu extends Component {
 
                 <TouchableOpacity
                     onPress={selfClick}
+                    onLongPress={mainMenu}
                     style={styles.gameUserTouchable}>
 
                     <Image
@@ -191,8 +195,6 @@ export class GameMenu extends Component {
 
                 {this.state.modal && <Modal/>}
 
-                {this.state.modal === 'note' && <Note/>}
-
             </View>
         );
     }
@@ -203,12 +205,12 @@ class BottomMenu extends Component {
         return (
             <View style={styles.userMenu}>
 
-                <TouchableOpacity onPress={mainMenu}
-                                  style={styles.button}>
-                    <Text style={styles.userMenuText}>
-                        Choose
-                    </Text>
-                </TouchableOpacity>
+                {/*<TouchableOpacity onPress={mainMenu}*/}
+                                  {/*style={styles.button}>*/}
+                    {/*<Text style={styles.userMenuText}>*/}
+                        {/*Choose*/}
+                    {/*</Text>*/}
+                {/*</TouchableOpacity>*/}
 
                 {/*<TouchableOpacity onPress={menuClick}*/}
                                   {/*style={styles.button}>*/}
@@ -225,8 +227,8 @@ class BottomMenu extends Component {
 class Error extends Component {
     render() {
         return (
-            <View style={styles.userMenu}>
-                <Text style={styles.welcomeText}>
+            <View style={styles.menu}>
+                <Text style={styles.textData}>
                     Error
                 </Text>
             </View>

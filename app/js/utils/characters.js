@@ -7,7 +7,7 @@ export const characters = [
         // width: 220,
         // height: 220,
         // text: ""
-        data: "At your disposal a set of ducks. With unique abilities in each. New ones can be obtained in various ways. To get some, you have to go through a lot. Good duck."
+        data: "Here is are a few ducks for you. With unique abilities in each. New ones can be found in various ways. To get some, you have to go through a lot. Good duck."
     },
     {
         image: images.goose,

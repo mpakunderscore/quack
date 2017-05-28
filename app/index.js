@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import {View} from 'react-native';
+import {View, StatusBar} from 'react-native';
 
 import {Map} from './js/map';
 import {map} from './js/map';
@@ -15,6 +15,7 @@ export class Index extends Component {
     render() {
             return (
                 <View style={styles.container}>
+                    <StatusBar translucent/>
                     <Map/>
                     <Menu/>
                 </View>
