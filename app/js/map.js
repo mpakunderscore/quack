@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Alert, Image, TouchableOpacity} from 'react-native';
+import {Alert, Image, TouchableOpacity, View} from 'react-native';
 
 import MapView from 'react-native-maps';
 
@@ -80,19 +80,22 @@ export class Map extends Component {
         map.play = () => {
 
             this.setState({
-                style: styles.gameMap
+                style: styles.gameMap,
+                opacity: styles.opacity7,
             });
         };
 
         map.main = () => {
 
             this.setState({
-                style: styles.map
+                style: styles.map,
+                opacity: styles.opacity2,
             });
         };
 
         this.state = {
             style: styles.map,
+            opacity: styles.opacity2,
             region: {
                 latitude: 0,
                 longitude: 0,
@@ -144,26 +147,31 @@ export class Map extends Component {
 
     render() {
         return (
-            <MapView
-                style={this.state.style}
-                region={this.state.region}
-            >
-                {this.state.markers.map(marker => (
+            <View
+                style={this.state.opacity}>
 
-                    <MapView.Marker
-                        coordinate={marker.region}
-                        key={marker.id}
-                        title={marker.title}
-                        description={marker.description}
-                    >
-                        <Image source={images.goose}
-                               style={styles.gameUser}/>
+                <MapView
+                    style={this.state.style}
+                    region={this.state.region}
+                >
+                    {this.state.markers.map(marker => (
 
-                    </MapView.Marker>
+                        <MapView.Marker
+                            coordinate={marker.region}
+                            key={marker.id}
+                            title={marker.title}
+                            description={marker.description}
+                        >
+                            <Image source={images.goose}
+                                   style={styles.gameUser}/>
 
-                ))}
+                        </MapView.Marker>
 
-            </MapView>
+                    ))}
+
+                </MapView>
+
+            </View>
         );
     }
 }

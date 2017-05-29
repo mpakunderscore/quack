@@ -15,7 +15,10 @@ export class Index extends Component {
     render() {
             return (
                 <View style={styles.container}>
-                    <StatusBar translucent/>
+                    <StatusBar
+                        backgroundColor={'rgba(0, 0, 0, 0.3)'}
+                        translucent
+                    />
                     <Map/>
                     <Menu/>
                 </View>

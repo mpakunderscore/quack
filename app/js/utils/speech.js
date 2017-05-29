@@ -1,9 +1,9 @@
-let Speech = require('react-native-speech');
+// let Speech = require('react-native-speech');
 
 export function speakF (text) {
-    Speech.speak({
-        text: text,
-        voice: 'ru-RU'
-    });
+    // Speech.speak({
+    //     text: text,
+    //     voice: 'en-US'
+    // });
 }
 

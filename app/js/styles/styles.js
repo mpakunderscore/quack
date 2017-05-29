@@ -18,30 +18,24 @@ export let gameUsersWidth = gameUserWidth;
 export const styles = StyleSheet.create({
 
     container: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        justifyContent: 'flex-end',
-        alignItems: 'center',
+        flex: 1,
         backgroundColor: 'white'
     },
+    opacity2: {
+        flex: 1,
+        opacity: 0.2
+    },
+    opacity7: {
+        flex: 1,
+        opacity: 0.7
+    },
     map: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        opacity: 0.2,
+        flex: 1,
+        // opacity: 0.2,
     },
     gameMap: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        opacity: 0.7,
+        flex: 1,
+        // opacity: 0.7,
     },
     button: {
         // backgroundColor: "red"
