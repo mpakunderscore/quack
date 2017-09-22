@@ -1,6 +1,7 @@
 export const texts = {
-    welcome: "Choose your animal",
-    ok: "Quack", //Rrrr...,
+    welcome: "Swipe duck",
+
+    ok: "Ok",
     items: "Items",
     home: "Home",
     menu: "Menu",

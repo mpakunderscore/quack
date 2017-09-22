@@ -3,27 +3,28 @@ import {View, Text, Image, Alert, TouchableHighlight, TouchableOpacity} from 're
 
 import Swiper from 'react-native-swiper';
 
-import {Modal} from './utils/modal';
-import {Note} from './utils/note';
+import {Modal} from '../utils/modal';
+import {Note} from '../utils/note';
 
-import {styles} from './styles/styles';
-import {texts} from './utils/texts';
-import {images} from './utils/images';
+import {styles} from '../styles/styles';
+import {texts} from '../utils/texts';
+import {images} from '../utils/images';
 
-import {selfClick} from './actions';
-import {selectClick} from './actions';
-import {itemsClick} from './actions';
-import {menuClick} from './actions';
-import {mainMenu} from './actions';
-import {closeModal} from './actions';
+import {selfClick} from '../actions';
+import {selectClick} from '../actions';
+import {itemsClick} from '../actions';
+import {menuClick} from '../actions';
+import {mainMenu} from '../actions';
+import {closeModal} from '../actions';
 // import {moveOut} from './actions';
 // import {moveIn} from './actions';
-import {zoom} from './actions';
-import {characters} from './utils/characters';
+import {zoom} from '../actions';
+import {characters} from '../utils/characters';
 
 export let menu = {};
 
-menu.index = 1;
+menu.name = 'index';
+menu.index = 0;
 
 export class Menu extends Component {
 
@@ -82,9 +83,9 @@ export class MainMenu extends Component {
         return (
             <View style={styles.menu}>
 
-                {/*<Text style={styles.welcomeText}>*/}
-                    {/*{texts.welcome}*/}
-                {/*</Text>*/}
+                <Text style={styles.welcomeText}>
+                    {texts.welcome}
+                </Text>
 
                 <Swiper style={styles.swiper}
                         showsButtons={false}
@@ -97,23 +98,25 @@ export class MainMenu extends Component {
                     {this.state.characters.map((character, index) => (
 
                         <View style={styles.swiperView}
-                              key={character.id}>
+                              key={character.name}>
 
                             <TouchableOpacity
-                                onPress={() => selectClick(character.image, character.id, index)}>
+                                onPress={() => selectClick(character.name, character.image, index)}>
+
                                 <Image
                                     style={{width: character.width, height: character.height}}
                                     source={character.image}
                                 />
+
                             </TouchableOpacity>
 
                             <Text style={styles.textData}>
                                 {character.data}
                             </Text>
 
-                            {/*<Text style={styles.select}>*/}
-                                {/*{character.text}*/}
-                            {/*</Text>*/}
+                            <Text style={styles.select}>
+                                {character.text}
+                            </Text>
 
                         </View>
 

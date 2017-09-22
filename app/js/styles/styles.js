@@ -3,7 +3,9 @@ import {Dimensions, StyleSheet, PixelRatio} from 'react-native';
 let { height, width } = Dimensions.get('window');
 
 // let font = 'Heiti SC';
-let font = 'Chalkduster';
+// let font = 'Chalkduster';
+
+let font = 'OpenSans-Light';
 let fontSize = 30;
 
 //TODO %
@@ -12,6 +14,61 @@ export let gameUsersWidth = gameUserWidth;
 
 // import {main} from './main';
 // import {game} from './game';
+
+export const mainStyles = StyleSheet.create({
+
+    container: {
+        flex: 1,
+        backgroundColor: 'white'
+    },
+    opacity2: {
+        flex: 1,
+        opacity: 0.1,
+    },
+    opacity7: {
+        flex: 1,
+        opacity: 0.7
+    },
+    map: {
+        flex: 1,
+        // opacity: 0.2,
+    },
+    gameMap: {
+        flex: 1,
+        // opacity: 0.7,
+    },
+    button: {
+        // backgroundColor: "red"
+    },
+    modal: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+
+        // justifyContent: 'center',
+        // alignItems: 'center',
+
+        backgroundColor: 'white',
+        opacity: 0.95,
+    },
+    input: {
+        height: 25,
+        borderColor: 'gray',
+        borderWidth: 0,
+        margin: 50,
+        backgroundColor: 'transparent',
+    },
+    modalText: {
+        fontSize: 25,
+        backgroundColor: 'transparent',
+        fontFamily: font,
+        margin: 50
+    },
+});
+
+
 
 
 
@@ -23,7 +80,7 @@ export const styles = StyleSheet.create({
     },
     opacity2: {
         flex: 1,
-        opacity: 0.2
+        opacity: 0.1,
     },
     opacity7: {
         flex: 1,
@@ -90,8 +147,6 @@ export const styles = StyleSheet.create({
             textAlign: 'center',
             margin: 50
         },
-        swiper: {
-        },
         swiperView: {
             flex: 1,
             // position: 'absolute',
@@ -108,7 +163,7 @@ export const styles = StyleSheet.create({
             position: 'absolute',
             // right: 0,
             // left: 0,
-            // bottom: 50,
+            // bottom: 0,
             justifyContent: 'center',
             backgroundColor: 'transparent',
             fontSize: PixelRatio.getPixelSizeForLayoutSize(12),
@@ -131,7 +186,7 @@ export const styles = StyleSheet.create({
             position: 'absolute',
             right: 0,
             left: 0,
-            bottom: 50,
+            bottom: 0,
             justifyContent: 'center',
             backgroundColor: 'transparent',
             fontSize: fontSize,

@@ -1,6 +1,6 @@
 //view controller
 
-import {sound} from './utils/sound';
+// import {sound} from './utils/sound';
 
 import {speakF} from './utils/speech';
 
@@ -14,23 +14,28 @@ import {main} from './../index';
 
 // import {setDuck} from './menu';
 
+import {sendImage} from './client';
+
 import {Alert} from 'react-native';
 
-import {map} from './map';
+import {map} from './view/map';
 
-import {menu} from './menu';
+import {menu} from './view/menu';
 
 export const selfClick = () => {
 
-    if (menu.id === "goose") {
+    if (menu.name === "goose") {
+    }
+
+    if (menu.name === "cyber") {
+
+        menu.modal(true);
+        menu.edit = true;
+
+    } else {
 
         sendSound();
         playSound();
-    }
-
-    if (menu.id === "cyber") {
-        menu.modal(true);
-        menu.edit = true;
     }
 };
 
@@ -41,14 +46,17 @@ export const speak = (text) => {
     // let text = "Проверка"
 }
 
-export const selectClick = (image, id, index) => {
+export const selectClick = (name, image, index) => {
 
     // Alert.alert('selectClick')
 
-    menu.id = id;
+    menu.name = name;
+    menu.image = image;
     menu.index = index;
 
-    play(image);
+    play();
+
+    sendImage(name);
 }
 
 export const menuClick = () => {
@@ -86,7 +94,7 @@ export const alert = () => {
 export function playSound() {
 
     // Play the sound with an onEnd callback
-    sound.play((success) => {
+    // sound.play((success) => {
 
         // if (success) {
         // Alert.alert('success');
@@ -95,7 +103,7 @@ export function playSound() {
         // Alert.alert('error');
         // console.log('playback failed due to audio decoding errors');
         // }
-    });
+    // });
 }
 
 // export function moveOut(x) {

@@ -5,17 +5,18 @@ import MapView from 'react-native-maps';
 
 // import Gestures from 'react-native-touch-gestures';
 
-import {styles} from './styles/styles';
-import {images} from './utils/images';
+import {styles} from '../styles/styles';
+import {images} from '../utils/images';
 
-import {playSound} from './actions';
-import {sendLocation} from './client';
+import {playSound} from '../actions';
+import {sendLocation} from '../client';
 
 //'59.9547';
 //'30.3275';
 
-let delta = 0.005;
+// let delta = 0.005;
 // let delta = 0.05;
+let delta = 3;
 
 export let map = {};
 
@@ -97,8 +98,8 @@ export class Map extends Component {
             style: styles.map,
             opacity: styles.opacity2,
             region: {
-                latitude: 0,
-                longitude: 0,
+                latitude: 59.9547,
+                longitude: 30.3275,
                 latitudeDelta: delta,
                 longitudeDelta: delta
             },
@@ -176,16 +177,11 @@ export class Map extends Component {
     }
 }
 
-export function placeUser(region) {
+export function placeUser(user) {
 
-    let user = {
-        id: region.id,
-        region: {
-            latitude: region.latitude,
-            longitude: region.longitude,
-        },
-        title: 'user',
-        description: 'user'
+    user.region = {
+        latitude: user.latitude,
+        longitude: user.longitude,
     };
 
     map.setUser(user);
@@ -196,9 +192,15 @@ export function removeUser(id) {
     map.removeUser(id);
 }
 
+export function changeUserImage() {
+
+}
+
 export function buildMap(map) {
 
     // let home = map.home;
+
+    console.log(map);
 
     let users = map.users;
 
@@ -206,12 +208,28 @@ export function buildMap(map) {
     console.log(users);
 
     for (let id in users) {
-        placeUser(users[id]);
+        // placeUser(users[id]);
+        // Alert.alert(id);
+    }
+
+    let npc = map.npc;
+
+    let arrayLength = npc.length;
+    for (let i = 0; i < arrayLength; i++) {
+        setNPC(npc[i]);
     }
 
     // let items = map.items;
 
     // let stores = map.stores;
+}
+
+//yes, this is ducks. users is a ducks too. everything is a duck. its a DuckScript
+//this is npc
+function setNPC(duck) {
+
+    // console.log("NPC")
+    placeUser(duck);
 }
 
 Array.prototype.place = function (obj) {

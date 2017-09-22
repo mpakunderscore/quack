@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 
 import {View, StatusBar} from 'react-native';
 
-import {Map} from './js/map';
-import {map} from './js/map';
+import {Map} from './js/view/map';
+import {map} from './js/view/map';
 
-import {Menu} from './js/menu';
-import {menu} from './js/menu';
+import {Menu} from './js/view/menu';
+import {menu} from './js/view/menu';
 
 import {styles} from './js/styles/styles';
 
@@ -26,9 +26,7 @@ export class Index extends Component {
     }
 }
 
-export function play(image) {
-
-    menu.image = image;
+export function play() {
 
     menu.play();
     map.play();

@@ -5,7 +5,7 @@ import {styles} from '../styles/styles';
 import {closeModal} from '../actions';
 import {speak} from '../actions';
 
-import {menu} from '../menu';
+import {menu} from '../view/menu';
 
 export class Modal extends Component {
 
