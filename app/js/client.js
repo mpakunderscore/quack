@@ -19,8 +19,8 @@ import SocketIOClient from 'socket.io-client';
 
 const port = 3000;
 
-// const ip = 'wss://' + 'duck.city';
-const ip = 'http://92.61.69.168:' + port;
+const ip = 'wss://' + 'duck.city';
+// const ip = 'http://92.61.69.168:' + port;
 
 let socket = SocketIOClient(ip);
 

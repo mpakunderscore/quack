@@ -1,6 +1,6 @@
 //view controller
 
-// import {sound} from './utils/sound';
+import {sound} from './utils/sound';
 
 import {speakF} from './utils/speech';
 
@@ -94,16 +94,16 @@ export const alert = () => {
 export function playSound() {
 
     // Play the sound with an onEnd callback
-    // sound.play((success) => {
+    sound.play((success) => {
 
-        // if (success) {
+        if (success) {
         // Alert.alert('success');
-        // console.log('successfully finished playing');
-        // } else {
+        console.log('successfully finished playing');
+        } else {
         // Alert.alert('error');
-        // console.log('playback failed due to audio decoding errors');
-        // }
-    // });
+        console.log('playback failed due to audio decoding errors');
+        }
+    });
 }
 
 // export function moveOut(x) {

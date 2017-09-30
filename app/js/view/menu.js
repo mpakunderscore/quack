@@ -3,6 +3,8 @@ import {View, Text, Image, Alert, TouchableHighlight, TouchableOpacity} from 're
 
 import Swiper from 'react-native-swiper';
 
+// let ViewPager = require('react-native-viewpager');
+
 import {Modal} from '../utils/modal';
 import {Note} from '../utils/note';
 
@@ -23,7 +25,7 @@ import {characters} from '../utils/characters';
 
 export let menu = {};
 
-menu.name = 'index';
+// menu.name = 'index';
 menu.index = 0;
 
 export class Menu extends Component {
@@ -92,13 +94,14 @@ export class MainMenu extends Component {
                         showsPagination={false}
                         autoplay={false}
                         index={menu.index}
-                        autoplayTimeout={15}
+                        loop={true}
+                        autoplayTimeout={1}
                         activeDotColor={"gray"}>
 
                     {this.state.characters.map((character, index) => (
 
                         <View style={styles.swiperView}
-                              key={character.name}>
+                              key={character.id}>
 
                             <TouchableOpacity
                                 onPress={() => selectClick(character.name, character.image, index)}>

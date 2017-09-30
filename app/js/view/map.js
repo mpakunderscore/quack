@@ -14,9 +14,9 @@ import {sendLocation} from '../client';
 //'59.9547';
 //'30.3275';
 
-// let delta = 0.005;
+let delta = 0.005;
 // let delta = 0.05;
-let delta = 3;
+// let delta = 3;
 
 export let map = {};
 
@@ -217,6 +217,7 @@ export function buildMap(map) {
     let arrayLength = npc.length;
     for (let i = 0; i < arrayLength; i++) {
         setNPC(npc[i]);
+        // Alert.alert(npc[i]);
     }
 
     // let items = map.items;

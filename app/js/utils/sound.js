@@ -12,7 +12,7 @@ let Sound = require('react-native-sound');
 export let sound = new Sound('quack.mp3', Sound.MAIN_BUNDLE, (error) => {
 
     if (error) {
-        Alert.alert('failed to load the sound');
+        // Alert.alert('failed to load the sound');
         console.log('failed to load the sound', error);
         return;
     }

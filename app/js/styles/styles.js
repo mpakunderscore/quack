@@ -33,6 +33,8 @@ export const mainStyles = StyleSheet.create({
         flex: 1,
         // opacity: 0.2,
     },
+    swiper: {
+    },
     gameMap: {
         flex: 1,
         // opacity: 0.7,
@@ -186,12 +188,12 @@ export const styles = StyleSheet.create({
             position: 'absolute',
             right: 0,
             left: 0,
-            bottom: 0,
+            bottom: 50,
             justifyContent: 'center',
             backgroundColor: 'transparent',
             fontSize: fontSize,
             textAlign: 'center',
-            margin: 50
+            // margin: 50
         },
 
     //GAME
