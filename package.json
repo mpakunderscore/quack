@@ -1,6 +1,6 @@
 {
 	"name": "duck",
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"private": true,
 	"scripts": {
 		"start": "node ./node_modules/react-native/local-cli/cli.js start",
@@ -15,9 +15,10 @@
 		"socket.io-client": "1.7.3"
 	},
 	"devDependencies": {
-		"babel-jest": "^21.2.0",
-		"babel-preset-react-native": "^4.0.0",
-		"jest": "^21.2.1"
+		"babel-jest": "~20.0.3",
+		"babel-preset-react-native": "~1.9.2",
+		"jest": "~20.0.4",
+		"react-test-renderer": "~15.5.4"
 	},
 	"jest": {
 		"preset": "react-native"
