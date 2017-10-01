@@ -17,7 +17,7 @@ export class Note extends Component {
                 <View style={styles.userMenu}>
 
                     <TouchableOpacity onPress={closeModal}>
-                        <Text style={styles.userMenuText}>
+                        <Text style={styles.modalClose}>
                             Place
                         </Text>
                     </TouchableOpacity>

@@ -3,23 +3,12 @@ import {View, Text, Image, Alert, TouchableHighlight, TouchableOpacity} from 're
 
 import Swiper from 'react-native-swiper';
 
-// let ViewPager = require('react-native-viewpager');
-
-import {Modal} from '../utils/modal';
-import {Note} from '../utils/note';
-
 import {styles} from '../styles/styles';
 import {texts} from '../utils/texts';
-import {images} from '../utils/images';
 
 import {selfClick} from '../actions';
 import {selectClick} from '../actions';
-import {itemsClick} from '../actions';
-import {menuClick} from '../actions';
 import {mainMenu} from '../actions';
-import {closeModal} from '../actions';
-// import {moveOut} from './actions';
-// import {moveIn} from './actions';
 import {zoom} from '../actions';
 import {characters} from '../utils/characters';
 
@@ -140,14 +129,13 @@ export class GameMenu extends Component {
 
         super(props);
 
-        menu.modal = (val) => {
-            this.setState({
-                modal: val
-            });
-        };
+        // menu.modal = (val) => {
+        //     this.setState({
+        //         modal: val
+        //     });
+        // };
 
         this.state = {
-            modal: false,
             image: menu.image
         };
     }
@@ -196,34 +184,6 @@ export class GameMenu extends Component {
                     />
 
                 </TouchableOpacity>
-
-                <BottomMenu/>
-
-                {this.state.modal && <Modal/>}
-
-            </View>
-        );
-    }
-}
-
-class BottomMenu extends Component {
-    render() {
-        return (
-            <View style={styles.userMenu}>
-
-                {/*<TouchableOpacity onPress={mainMenu}*/}
-                                  {/*style={styles.button}>*/}
-                    {/*<Text style={styles.userMenuText}>*/}
-                        {/*Choose*/}
-                    {/*</Text>*/}
-                {/*</TouchableOpacity>*/}
-
-                {/*<TouchableOpacity onPress={menuClick}*/}
-                                  {/*style={styles.button}>*/}
-                    {/*<Text style={styles.userMenuText}>*/}
-                        {/*{texts.menu}*/}
-                    {/*</Text>*/}
-                {/*</TouchableOpacity>*/}
 
             </View>
         );

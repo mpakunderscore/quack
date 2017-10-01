@@ -22,30 +22,9 @@ import {map} from './view/map';
 
 import {menu} from './view/menu';
 
-export const selfClick = () => {
+import {modal} from './view/modal';
 
-    if (menu.name === "goose") {
-    }
-
-    if (menu.name === "cyber") {
-
-        menu.modal(true);
-        menu.edit = true;
-
-    } else {
-
-        sendSound();
-        playSound();
-    }
-};
-
-export const speak = (text) => {
-
-    sendText(text);
-    speakF(text)
-    // let text = "Проверка"
-}
-
+//MAIN MENU
 export const selectClick = (name, image, index) => {
 
     // Alert.alert('selectClick')
@@ -54,71 +33,90 @@ export const selectClick = (name, image, index) => {
     menu.image = image;
     menu.index = index;
 
-    play();
+    if (name === "cyber") {
 
-    sendImage(name);
+        // menu.modal(true);
+
+        modal.show();
+
+    } else {
+
+        play();
+        sendImage(name);
+    }
+};
+
+//IN GAME
+export const selfClick = () => {
+
+    if (menu.name === "goose") {
+    }
+
+    if (menu.name === "cyber") {
+
+        // menu.modal(true);
+        // menu.edit = true;
+
+    } else {
+
+        sendSound();
+        playSound();
+    }
+};
+
+
+
+export const speak = (text) => {
+
+    sendText(text);
+    speakF(text)
+    // let text = "Проверка"
 }
+
+
 
 export const menuClick = () => {
 
-    // Alert.alert('selectClick')
-
-    // Alert.alert('Menu')
-
-    menu.modal(true)
+    // menu.modal(true)
 };
 
 export const closeModal = () => {
-    menu.modal(false)
+    // menu.modal(false)
+    modal.hide();
 };
 
 export function itemsClick() {
-
-    // Alert.alert('selectClick')
-
-    // Alert.alert('Items')
 }
 
 export const mainMenu = () => {
-
-    // Alert.alert('selectClick')
-
     main();
 };
 
 export const alert = () => {
-
-    Alert.alert('Alert')
+    // Alert.alert('Alert')
 };
 
 export function playSound() {
 
+    //TODO move out
     // Play the sound with an onEnd callback
     sound.play((success) => {
 
         if (success) {
-        // Alert.alert('success');
-        console.log('successfully finished playing');
+
+            // Alert.alert('success');
+            console.log('successfully finished playing');
         } else {
-        // Alert.alert('error');
-        console.log('playback failed due to audio decoding errors');
+            // Alert.alert('error');
+            console.log('playback failed due to audio decoding errors');
         }
     });
 }
 
-// export function moveOut(x) {
-//     map.moveOut(x);
-// }
-//
-// export function moveIn() {
-//     map.moveIn();
-// }
-
+//TODO move out
 export function zoom(y) {
 
     let bias = 0;
-
-    // Alert.alert(y + '')
 
     if (y > 0)
         bias = 1.05;

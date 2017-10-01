@@ -78,25 +78,7 @@ export class Map extends Component {
             });
         };
 
-        map.play = () => {
-
-            this.setState({
-                style: styles.gameMap,
-                opacity: styles.opacity7,
-            });
-        };
-
-        map.main = () => {
-
-            this.setState({
-                style: styles.map,
-                opacity: styles.opacity2,
-            });
-        };
-
         this.state = {
-            style: styles.map,
-            opacity: styles.opacity2,
             region: {
                 latitude: 59.9547,
                 longitude: 30.3275,
@@ -149,10 +131,10 @@ export class Map extends Component {
     render() {
         return (
             <View
-                style={this.state.opacity}>
+                style={styles.flex}>
 
                 <MapView
-                    style={this.state.style}
+                    style={styles.flex}
                     region={this.state.region}
                 >
                     {this.state.markers.map(marker => (

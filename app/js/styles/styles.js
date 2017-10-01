@@ -2,76 +2,12 @@ import {Dimensions, StyleSheet, PixelRatio} from 'react-native';
 
 let { height, width } = Dimensions.get('window');
 
-// let font = 'Heiti SC';
-// let font = 'Chalkduster';
-
 let font = 'OpenSans-Light';
 let fontSize = 30;
 
 //TODO %
 export let gameUserWidth = 80;
 export let gameUsersWidth = gameUserWidth;
-
-// import {main} from './main';
-// import {game} from './game';
-
-export const mainStyles = StyleSheet.create({
-
-    container: {
-        flex: 1,
-        backgroundColor: 'white'
-    },
-    opacity2: {
-        flex: 1,
-        opacity: 0.1,
-    },
-    opacity7: {
-        flex: 1,
-        opacity: 0.7
-    },
-    map: {
-        flex: 1,
-        // opacity: 0.2,
-    },
-    swiper: {
-    },
-    gameMap: {
-        flex: 1,
-        // opacity: 0.7,
-    },
-    button: {
-        // backgroundColor: "red"
-    },
-    modal: {
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0,
-
-        // justifyContent: 'center',
-        // alignItems: 'center',
-
-        backgroundColor: 'white',
-        opacity: 0.95,
-    },
-    input: {
-        height: 25,
-        borderColor: 'gray',
-        borderWidth: 0,
-        margin: 50,
-        backgroundColor: 'transparent',
-    },
-    modalText: {
-        fontSize: 25,
-        backgroundColor: 'transparent',
-        fontFamily: font,
-        margin: 50
-    },
-});
-
-
-
 
 
 export const styles = StyleSheet.create({
@@ -80,38 +16,68 @@ export const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white'
     },
-    opacity2: {
+
+
+    flex: {
         flex: 1,
-        opacity: 0.1,
-    },
-    opacity7: {
-        flex: 1,
-        opacity: 0.7
     },
     map: {
         flex: 1,
-        // opacity: 0.2,
+        backgroundColor: 'white',
+        opacity: 0.3,
     },
     gameMap: {
         flex: 1,
-        // opacity: 0.7,
     },
-    button: {
-        // backgroundColor: "red"
-    },
+
+
+
+
+
+
+
+
+
     modal: {
+        opacity: 0,
+        height: 0
+    },
+    modalShow: {
         position: 'absolute',
         left: 0,
         right: 0,
         top: 0,
         bottom: 0,
 
-        // justifyContent: 'center',
-        // alignItems: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
 
         backgroundColor: 'white',
-        opacity: 0.95,
+        opacity: 1.0,
     },
+
+    modalButtons: {
+
+        position: 'absolute',
+        right: 0,
+        left: 0,
+        bottom: 0,
+        // bottom: 50,
+
+        // backgroundColor: 'green',
+        justifyContent: 'center',
+        alignItems: 'center',
+        // margin: 50
+    },
+
+
+
+
+
+
+
+
+
     input: {
         height: 25,
         borderColor: 'gray',
@@ -130,6 +96,7 @@ export const styles = StyleSheet.create({
 
         menu: {
             position: 'absolute',
+            backgroundColor: 'rgba(255, 255, 255, 0.7)',
             left: 0,
             right: 0,
             top: 0,
@@ -151,37 +118,17 @@ export const styles = StyleSheet.create({
         },
         swiperView: {
             flex: 1,
-            // position: 'absolute',
-            // bottom: 50,
-            // flexDirection: 'column',
-            // justifyContent: 'space-between',
             justifyContent: 'center',
             alignItems: 'center',
-            // backgroundColor: 'green',
-            // opacity: 0.5
         },
         textData: {
             fontFamily: font,
             position: 'absolute',
-            // right: 0,
-            // left: 0,
-            // bottom: 0,
             justifyContent: 'center',
             backgroundColor: 'transparent',
             fontSize: PixelRatio.getPixelSizeForLayoutSize(12),
             textAlign: 'center',
             margin: 50
-        },
-        selectAnimal: {
-            // position: 'relative',
-            // top: 0, left: 0, right: 0, bottom: 0,
-            // justifyContent: 'center', alignItems: 'center',
-            // opacity: 0.5,
-            // backgroundColor: 'green',
-            // flex: 1,
-            // height: 250
-            // margin: 50,
-            // padding: 50
         },
         select: {
             fontFamily: font,
@@ -261,12 +208,4 @@ export const styles = StyleSheet.create({
 
             margin: 20
         },
-        userMenuText: {
-            fontSize: 25,
-            backgroundColor: 'transparent',
-            fontFamily: font,
-            // flex: 1,
-            // alignItems: 'right',
-            // color: 'gray'
-        }
 });
