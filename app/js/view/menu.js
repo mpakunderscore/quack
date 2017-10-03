@@ -14,7 +14,7 @@ import {characters} from '../utils/characters';
 
 export let menu = {};
 
-// menu.name = 'index';
+menu.name = 'goose';
 menu.index = 0;
 
 export class Menu extends Component {
@@ -140,42 +140,45 @@ export class GameMenu extends Component {
         };
     }
 
-    onMove(e) {
-
-        if (oldY === null) {
-            oldY = e.nativeEvent.pageY;
-            return;
-        }
-
-        zoom(oldY - e.nativeEvent.pageY);
-
-        oldY = e.nativeEvent.pageY;
-    }
-
-    onRelease(e) {
-
-        oldY = null;
-    }
-
-    _onStartShouldSetResponder(e) {
-        return true;
-    }
-
-    _onMoveShouldSetResponder(e) {
-        return true;
-    }
+    // onMove(e) {
+    //
+    //     if (oldY === null) {
+    //         oldY = e.nativeEvent.pageY;
+    //         return;
+    //     }
+    //
+    //     // zoom(oldY - e.nativeEvent.pageY);
+    //
+    //     oldY = e.nativeEvent.pageY;
+    // }
+    //
+    // onRelease(e) {
+    //
+    //     oldY = null;
+    // }
+    //
+    // _onStartShouldSetResponder(e) {
+    //     return true;
+    // }
+    //
+    // _onMoveShouldSetResponder(e) {
+    //     return true;
+    // }
 
     render() {
         return (
             <View style={styles.gameMenu}
-                  onResponderMove={this.onMove}
-                  onResponderRelease={this.onRelease}
-                  onStartShouldSetResponder={this._onStartShouldSetResponder}
-                  onMoveShouldSetResponder={this._onMoveShouldSetResponder}>
+                  pointerEvents={'none'}
+                  // onResponderMove={this.onMove}
+                  // onResponderRelease={this.onRelease}
+                  // onStartShouldSetResponder={this._onStartShouldSetResponder}
+                  // onMoveShouldSetResponder={this._onMoveShouldSetResponder}
+                >
 
                 <TouchableOpacity
                     onPress={selfClick}
                     onLongPress={mainMenu}
+                    pointerEvents={'all'}
                     style={styles.gameUserTouchable}>
 
                     <Image

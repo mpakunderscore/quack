@@ -19,14 +19,10 @@ import SocketIOClient from 'socket.io-client';
 
 const port = 3000;
 
-const ip = 'wss://' + 'duck.city';
-// const ip = 'http://92.61.69.168:' + port;
+// const ip = 'wss://' + 'duck.city';
+const ip = 'http://92.61.69.168:' + port;
 
 let socket = SocketIOClient(ip);
-
-export let sendSound = function () {
-    socket.emit('sound', 'some sound');
-};
 
 export let sendText = function (text) {
     socket.emit('text', text);
@@ -43,6 +39,10 @@ export let sendLocation = function (region) {
 
 export let sendImage = function (name) {
     socket.emit('image', JSON.stringify({name: name}));
+};
+
+export let sendSound = function () {
+    socket.emit('sound', 'some sound');
 };
 
 socket.on('duck', (duck) => {

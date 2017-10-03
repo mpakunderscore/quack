@@ -36,7 +36,7 @@ export class Modal extends Component {
             <View style={this.state.style}>
 
                 <Text>
-                    0x99314BCB71c8f932C369b18264BB135e2C2a66A5
+                    {"0.0 COIN"}
                 </Text>
 
                 <Buttons/>

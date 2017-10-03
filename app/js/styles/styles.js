@@ -21,26 +21,10 @@ export const styles = StyleSheet.create({
     flex: {
         flex: 1,
     },
-    map: {
-        flex: 1,
-        backgroundColor: 'white',
-        opacity: 0.3,
-    },
-    gameMap: {
-        flex: 1,
-    },
-
-
-
-
-
-
-
-
 
     modal: {
         opacity: 0,
-        height: 0
+        height: 0,
     },
     modalShow: {
         position: 'absolute',
@@ -56,13 +40,19 @@ export const styles = StyleSheet.create({
         opacity: 1.0,
     },
 
+    modalText: {
+        fontSize: 25,
+        // backgroundColor: 'transparent',
+        fontFamily: font,
+        // margin: 50
+    },
     modalButtons: {
 
         position: 'absolute',
         right: 0,
         left: 0,
-        bottom: 0,
-        // bottom: 50,
+        // bottom: 0,
+        bottom: 50,
 
         // backgroundColor: 'green',
         justifyContent: 'center',
@@ -70,27 +60,6 @@ export const styles = StyleSheet.create({
         // margin: 50
     },
 
-
-
-
-
-
-
-
-
-    input: {
-        height: 25,
-        borderColor: 'gray',
-        borderWidth: 0,
-        margin: 50,
-        backgroundColor: 'transparent',
-    },
-    modalText: {
-        fontSize: 25,
-        backgroundColor: 'transparent',
-        fontFamily: font,
-        margin: 50
-    },
 
     //MAIN
 
@@ -162,7 +131,8 @@ export const styles = StyleSheet.create({
             justifyContent: 'center',
             alignItems: 'center',
 
-            backgroundColor: 'transparent',
+            // backgroundColor: 'rgba(255, 255, 255, 0.5)',
+            // pointerEvents: 'none'
             // opacity: 0.5,
 
             // zIndex: 2,

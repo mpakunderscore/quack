@@ -9,6 +9,7 @@ import {styles} from '../styles/styles';
 import {images} from '../utils/images';
 
 import {playSound} from '../actions';
+import {markClick} from '../actions';
 import {sendLocation} from '../client';
 
 //'59.9547';
@@ -62,11 +63,11 @@ export class Map extends Component {
 
             delta *= bias;
 
-            if (delta < 0.005)
-                delta = 0.005;
+            if (delta < 0.001)
+                delta = 0.001;
 
-            if (delta > 1)
-                delta = 1;
+            if (delta > 5)
+                delta = 5;
 
             this.setState({
                 region: {
@@ -94,7 +95,12 @@ export class Map extends Component {
 
         navigator.geolocation.watchPosition(this.setLocation, (error) => {
 
-            }, {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+            }, {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 5000,
+            distanceFilter: 10,
+            useSignificantChanges: false}
         );
     }
 
@@ -145,8 +151,16 @@ export class Map extends Component {
                             title={marker.title}
                             description={marker.description}
                         >
-                            <Image source={images.goose}
-                                   style={styles.gameUser}/>
+
+                            <TouchableOpacity
+                                onPress={markClick}
+                                onLongPress={markClick}
+                                style={styles.gameUserTouchable}>
+
+                                <Image source={images[marker.name]}
+                                       style={styles.gameUser}/>
+
+                            </TouchableOpacity>
 
                         </MapView.Marker>
 
@@ -189,8 +203,11 @@ export function buildMap(map) {
     console.log('users');
     console.log(users);
 
-    for (let id in users) {
-        // placeUser(users[id]);
+    for (let key in users) {
+        if (users.hasOwnProperty(key)) {
+            placeUser(users[key]);
+        }
+
         // Alert.alert(id);
     }
 

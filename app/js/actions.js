@@ -65,6 +65,10 @@ export const selfClick = () => {
 };
 
 
+export const markClick = () => {
+    modal.show();
+}
+
 
 export const speak = (text) => {
 
