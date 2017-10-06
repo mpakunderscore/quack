@@ -65,7 +65,7 @@ export const styles = StyleSheet.create({
 
         menu: {
             position: 'absolute',
-            backgroundColor: 'rgba(255, 255, 255, 0.7)',
+            backgroundColor: 'rgba(255, 255, 255, 0.9)',
             left: 0,
             right: 0,
             top: 0,
@@ -132,7 +132,7 @@ export const styles = StyleSheet.create({
             alignItems: 'center',
 
             // backgroundColor: 'rgba(255, 255, 255, 0.5)',
-            // pointerEvents: 'none'
+            // pointerEvents: 'none',
             // opacity: 0.5,
 
             // zIndex: 2,

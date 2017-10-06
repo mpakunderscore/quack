@@ -15,7 +15,7 @@ import {characters} from '../utils/characters';
 export let menu = {};
 
 menu.name = 'goose';
-menu.index = 0;
+menu.index = 1;
 
 export class Menu extends Component {
 
@@ -175,18 +175,18 @@ export class GameMenu extends Component {
                   // onMoveShouldSetResponder={this._onMoveShouldSetResponder}
                 >
 
-                <TouchableOpacity
-                    onPress={selfClick}
-                    onLongPress={mainMenu}
-                    pointerEvents={'all'}
-                    style={styles.gameUserTouchable}>
+                {/*<TouchableOpacity*/}
+                    {/*onPress={selfClick}*/}
+                    {/*onLongPress={mainMenu}*/}
+                    {/*// pointerEvents={'all'}*/}
+                    {/*style={styles.gameUserTouchable}>*/}
 
-                    <Image
-                        style={styles.gameUser}
-                        source={this.state.image}
-                    />
+                    {/*<Image*/}
+                        {/*style={styles.gameUser}*/}
+                        {/*source={this.state.image}*/}
+                    {/*/>*/}
 
-                </TouchableOpacity>
+                {/*</TouchableOpacity>*/}
 
             </View>
         );

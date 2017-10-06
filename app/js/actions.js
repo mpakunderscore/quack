@@ -65,9 +65,21 @@ export const selfClick = () => {
 };
 
 
-export const markClick = () => {
-    modal.show();
-}
+export const markClick = (marker) => {
+
+    // Alert.alert(marker.id)
+
+    if (marker.id === "self") {
+
+        mainMenu()
+
+    } else {
+
+        modal.show();
+    }
+
+
+};
 
 
 export const speak = (text) => {
@@ -75,9 +87,7 @@ export const speak = (text) => {
     sendText(text);
     speakF(text)
     // let text = "Проверка"
-}
-
-
+};
 
 export const menuClick = () => {
 
@@ -118,18 +128,18 @@ export function playSound() {
 }
 
 //TODO move out
-export function zoom(y) {
-
-    let bias = 0;
-
-    if (y > 0)
-        bias = 1.05;
-
-    else
-        bias = 0.95;
-
-    map.zoom(bias)
-}
+// export function zoom(y) {
+//
+//     let bias = 0;
+//
+//     if (y > 0)
+//         bias = 1.05;
+//
+//     else
+//         bias = 0.95;
+//
+//     map.zoom(bias)
+// }
 
 
 

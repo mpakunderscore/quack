@@ -59,30 +59,30 @@ export class Map extends Component {
             });
         };
 
-        map.zoom = (bias) => {
-
-            delta *= bias;
-
-            if (delta < 0.001)
-                delta = 0.001;
-
-            if (delta > 5)
-                delta = 5;
-
-            this.setState({
-                region: {
-                    latitude: this.getRegion().latitude,
-                    longitude: this.getRegion().longitude,
-                    latitudeDelta: delta,
-                    longitudeDelta: delta
-                }
-            });
-        };
+        // map.zoom = (bias) => {
+        //
+        //     delta *= bias;
+        //
+        //     if (delta < 0.001)
+        //         delta = 0.001;
+        //
+        //     if (delta > 5)
+        //         delta = 5;
+        //
+        //     this.setState({
+        //         region: {
+        //             latitude: this.getRegion().latitude,
+        //             longitude: this.getRegion().longitude,
+        //             latitudeDelta: delta,
+        //             longitudeDelta: delta
+        //         }
+        //     });
+        // };
 
         this.state = {
             region: {
-                latitude: 59.9547,
-                longitude: 30.3275,
+                latitude: 0,
+                longitude: 0,
                 latitudeDelta: delta,
                 longitudeDelta: delta
             },
@@ -92,10 +92,12 @@ export class Map extends Component {
         this.setLocation = this.setLocation.bind(this);
         this.getRegion = this.getRegion.bind(this);
         this.getMarkers = this.getMarkers.bind(this);
+        this.onRegionChange = this.onRegionChange.bind(this);
 
         navigator.geolocation.watchPosition(this.setLocation, (error) => {
 
             }, {
+
             enableHighAccuracy: true,
             timeout: 5000,
             maximumAge: 5000,
@@ -121,17 +123,38 @@ export class Map extends Component {
             longitudeDelta: delta
         };
 
+        let current = this.getRegion();
+
         //TODO
-        if (region === this.getRegion())
+        if (region === current)
             return;
 
         // playSound();
 
         sendLocation(region);
 
-        this.setState({
-            region: region
-        });
+        this.slowChangeRegion(region);
+
+        //TODO
+        map.setUser({id: "self", region: region, name: "goose"});
+    }
+
+    onRegionChange(region) {
+        this.slowChangeRegion(region)
+    }
+
+    slowChangeRegion(region) {
+
+        // let current = this.getRegion();
+
+        console.log(this.getMarkers());
+
+        // region.region.latitudeDelta = this.getRegion().latitudeDelta;
+        // region.region.longitudeDelta = this.getRegion().longitudeDelta;
+
+        console.log(region);
+
+        this.setState({region: region});
     }
 
     render() {
@@ -139,9 +162,10 @@ export class Map extends Component {
             <View
                 style={styles.flex}>
 
-                <MapView
+                <MapView.Animated
                     style={styles.flex}
                     region={this.state.region}
+                    onRegionChange={this.onRegionChange}
                 >
                     {this.state.markers.map(marker => (
 
@@ -153,8 +177,8 @@ export class Map extends Component {
                         >
 
                             <TouchableOpacity
-                                onPress={markClick}
-                                onLongPress={markClick}
+                                onPress={() => markClick(marker)}
+                                onLongPress={() => markClick(marker)}
                                 style={styles.gameUserTouchable}>
 
                                 <Image source={images[marker.name]}
@@ -166,7 +190,7 @@ export class Map extends Component {
 
                     ))}
 
-                </MapView>
+                </MapView.Animated>
 
             </View>
         );
