@@ -9,13 +9,20 @@ import {texts} from '../utils/texts';
 import {selfClick} from '../actions';
 import {selectClick} from '../actions';
 import {mainMenu} from '../actions';
-import {zoom} from '../actions';
+// import {zoom} from '../actions';
 import {characters} from '../utils/characters';
 
 export let menu = {};
 
 menu.name = 'goose';
 menu.index = 1;
+
+//TODO
+export let user = {
+    title: "Your title",
+    description: "And some description"
+};
+
 
 export class Menu extends Component {
 
@@ -93,7 +100,7 @@ export class MainMenu extends Component {
                               key={character.id}>
 
                             <TouchableOpacity
-                                onPress={() => selectClick(character.name, character.image, index)}>
+                                onPress={() => selectClick(character.id, character.name, character.image, index)}>
 
                                 <Image
                                     style={{width: character.width, height: character.height}}

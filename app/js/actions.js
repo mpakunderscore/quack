@@ -2,17 +2,9 @@
 
 import {sound} from './utils/sound';
 
-import {speakF} from './utils/speech';
-
-import {sendSound} from './client';
-
-import {sendText} from './client';
-
 import {play} from './../index';
 
 import {main} from './../index';
-
-// import {setDuck} from './menu';
 
 import {sendImage} from './client';
 
@@ -22,10 +14,12 @@ import {map} from './view/map';
 
 import {menu} from './view/menu';
 
+import {user} from './view/menu';
+
 import {modal} from './view/modal';
 
 //MAIN MENU
-export const selectClick = (name, image, index) => {
+export const selectClick = (id, name, image, index) => {
 
     // Alert.alert('selectClick')
 
@@ -33,38 +27,25 @@ export const selectClick = (name, image, index) => {
     menu.image = image;
     menu.index = index;
 
-    if (name === "cyber") {
+    if (id === "settings") {
 
         // menu.modal(true);
 
-        modal.show();
+        modal.show(user);
+
+        // play();
+        // sendImage(name);
 
     } else {
 
         play();
         sendImage(name);
     }
+
+    // map.setUser({id: "self", region: {}, name: menu.name});
 };
 
-//IN GAME
-export const selfClick = () => {
-
-    if (menu.name === "goose") {
-    }
-
-    if (menu.name === "cyber") {
-
-        // menu.modal(true);
-        // menu.edit = true;
-
-    } else {
-
-        sendSound();
-        playSound();
-    }
-};
-
-
+//GAME
 export const markClick = (marker) => {
 
     // Alert.alert(marker.id)
@@ -75,39 +56,18 @@ export const markClick = (marker) => {
 
     } else {
 
-        modal.show();
+        modal.show(marker);
     }
 
 
 };
 
-
-export const speak = (text) => {
-
-    sendText(text);
-    speakF(text)
-    // let text = "Проверка"
-};
-
-export const menuClick = () => {
-
-    // menu.modal(true)
-};
-
 export const closeModal = () => {
-    // menu.modal(false)
     modal.hide();
 };
 
-export function itemsClick() {
-}
-
 export const mainMenu = () => {
     main();
-};
-
-export const alert = () => {
-    // Alert.alert('Alert')
 };
 
 export function playSound() {
@@ -126,20 +86,4 @@ export function playSound() {
         }
     });
 }
-
-//TODO move out
-// export function zoom(y) {
-//
-//     let bias = 0;
-//
-//     if (y > 0)
-//         bias = 1.05;
-//
-//     else
-//         bias = 0.95;
-//
-//     map.zoom(bias)
-// }
-
-
 

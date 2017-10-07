@@ -5,6 +5,7 @@ import {styles} from '../styles/styles';
 import {closeModal} from '../actions';
 
 export let modal = {};
+modal.display = false;
 
 export class Modal extends Component {
 
@@ -13,30 +14,42 @@ export class Modal extends Component {
         super(props);
 
         this.state = {
-            style: styles.modal
-        }
+            style: styles.modal,
+            marker: {}
+        };
 
-        modal.show = () => {
-
+        modal.show = (marker) => {
             this.setState({
-                style: styles.modalShow
+                marker: marker
             });
+            modal.display = true;
         };
 
         modal.hide = () => {
-
+            modal.display = false;
             this.setState({
-                style: styles.modal
+                marker: {}
             });
         };
     }
 
     render() {
         return (
+
+            modal.display &&
+
             <View style={this.state.style}>
 
-                <Text>
-                    {"0.0 COIN"}
+                <Text style={styles.modalHead}>
+                    {"This is duck"}
+                </Text>
+
+                <Text style={styles.modalText}>
+                    {this.state.marker.title}
+                </Text>
+
+                <Text style={styles.modalText}>
+                    {this.state.marker.description}
                 </Text>
 
                 <Buttons/>

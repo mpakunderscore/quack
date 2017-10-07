@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Alert, Image, TouchableOpacity, View} from 'react-native';
+import {Alert, Image, TouchableOpacity, View, Dimensions} from 'react-native';
 
 import MapView from 'react-native-maps';
 
@@ -8,18 +8,35 @@ import MapView from 'react-native-maps';
 import {styles} from '../styles/styles';
 import {images} from '../utils/images';
 
-import {playSound} from '../actions';
+// import {playSound} from '../actions';
 import {markClick} from '../actions';
 import {sendLocation} from '../client';
+
+import {menu} from './menu';
 
 //'59.9547';
 //'30.3275';
 
-let delta = 0.005;
+// let delta = 0.005;
 // let delta = 0.05;
 // let delta = 3;
 
 export let map = {};
+// map.region = {
+//     latitude: 0,
+//     longitude: 0,
+//     latitudeDelta: delta,
+//     longitudeDelta: delta
+// };
+
+const screen = Dimensions.get('window');
+
+const ASPECT_RATIO = screen.width / screen.height;
+let LATITUDE = 59.9547;
+let LONGITUDE = 30.3275;
+const LATITUDE_DELTA = 0.005;
+const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+
 
 export class Map extends Component {
 
@@ -59,32 +76,19 @@ export class Map extends Component {
             });
         };
 
-        // map.zoom = (bias) => {
-        //
-        //     delta *= bias;
-        //
-        //     if (delta < 0.001)
-        //         delta = 0.001;
-        //
-        //     if (delta > 5)
-        //         delta = 5;
-        //
-        //     this.setState({
-        //         region: {
-        //             latitude: this.getRegion().latitude,
-        //             longitude: this.getRegion().longitude,
-        //             latitudeDelta: delta,
-        //             longitudeDelta: delta
-        //         }
-        //     });
-        // };
+        // region: new MapView.AnimatedRegion({
+        //     latitude: LATITUDE,
+        //     longitude: LONGITUDE,
+        //     latitudeDelta: LATITUDE_DELTA,
+        //     longitudeDelta: LONGITUDE_DELTA,
+        // }),
 
         this.state = {
             region: {
-                latitude: 0,
-                longitude: 0,
-                latitudeDelta: delta,
-                longitudeDelta: delta
+                latitude: LATITUDE,
+                longitude: LONGITUDE,
+                latitudeDelta: LATITUDE_DELTA,
+                longitudeDelta: LONGITUDE_DELTA,
             },
             markers: []
         };
@@ -99,8 +103,8 @@ export class Map extends Component {
             }, {
 
             enableHighAccuracy: true,
-            timeout: 5000,
-            maximumAge: 5000,
+            timeout: 15000,
+            maximumAge: 15000,
             distanceFilter: 10,
             useSignificantChanges: false}
         );
@@ -114,45 +118,52 @@ export class Map extends Component {
         return this.state.markers;
     }
 
+    //on gps move, duck position
     setLocation(position) {
 
         const region = {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
-            latitudeDelta: delta,
-            longitudeDelta: delta
+            latitudeDelta: LATITUDE_DELTA,
+            longitudeDelta: LONGITUDE_DELTA
         };
 
-        let current = this.getRegion();
+        // let current = map.region;
 
         //TODO
-        if (region === current)
+        if (region === this.getRegion())
             return;
-
-        // playSound();
 
         sendLocation(region);
 
+        //slow move view to duck
         this.slowChangeRegion(region);
 
+        // this.setState({region: region});
+
         //TODO
-        map.setUser({id: "self", region: region, name: "goose"});
+        map.setUser({id: "self", region: region, name: menu.name});
+
+        //save duck region
+        // map.region = JSON.parse(JSON.stringify(region));
     }
 
+    //on user move
     onRegionChange(region) {
+
+        // this.setState({region: region});
+
         this.slowChangeRegion(region)
     }
 
     slowChangeRegion(region) {
 
-        // let current = this.getRegion();
+        // console.log(map.region.latitude - region.latitude);
 
-        console.log(this.getMarkers());
+        // moveToCenter();
 
-        // region.region.latitudeDelta = this.getRegion().latitudeDelta;
-        // region.region.longitudeDelta = this.getRegion().longitudeDelta;
-
-        console.log(region);
+        // LATITUDE = region.latitude;
+        // LONGITUDE = region.longitude;
 
         this.setState({region: region});
     }
@@ -162,24 +173,22 @@ export class Map extends Component {
             <View
                 style={styles.flex}>
 
-                <MapView.Animated
+                <MapView
                     style={styles.flex}
                     region={this.state.region}
                     onRegionChange={this.onRegionChange}
+                    moveOnMarkerPress={false}
                 >
                     {this.state.markers.map(marker => (
 
                         <MapView.Marker
                             coordinate={marker.region}
                             key={marker.id}
-                            title={marker.title}
-                            description={marker.description}
+                            style={styles.gameUserMarker}
+                            onPress={() => markClick(marker)}
                         >
 
-                            <TouchableOpacity
-                                onPress={() => markClick(marker)}
-                                onLongPress={() => markClick(marker)}
-                                style={styles.gameUserTouchable}>
+                            <TouchableOpacity style={styles.gameUserTouchable}>
 
                                 <Image source={images[marker.name]}
                                        style={styles.gameUser}/>
@@ -190,7 +199,7 @@ export class Map extends Component {
 
                     ))}
 
-                </MapView.Animated>
+                </MapView>
 
             </View>
         );

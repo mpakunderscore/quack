@@ -19,12 +19,12 @@ export const characters = [
         text: "Quack"
     },
     {
-        id: "cyber",
+        id: "settings",
         image: images.cyber,
         name: "cyber",
         width: 340,
         height: 340,
-        text: "Wallet"
+        text: "Settings"
     },
     // {
     //     id: "death",

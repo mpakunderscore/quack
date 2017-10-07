@@ -7,8 +7,6 @@ let fontSize = 30;
 
 //TODO %
 export let gameUserWidth = 80;
-export let gameUsersWidth = gameUserWidth;
-
 
 export const styles = StyleSheet.create({
 
@@ -23,10 +21,6 @@ export const styles = StyleSheet.create({
     },
 
     modal: {
-        opacity: 0,
-        height: 0,
-    },
-    modalShow: {
         position: 'absolute',
         left: 0,
         right: 0,
@@ -38,6 +32,10 @@ export const styles = StyleSheet.create({
 
         backgroundColor: 'white',
         opacity: 1.0,
+    },
+
+    modalHead: {
+        fontSize: 30,
     },
 
     modalText: {
@@ -138,19 +136,24 @@ export const styles = StyleSheet.create({
             // zIndex: 2,
         },
 
+        gameUserMarker: {
+            width: gameUserWidth,
+            height: gameUserWidth,
+            zIndex: 3
+        },
         gameUser: {
             // position: 'absolute',
             width: gameUserWidth,
             height: gameUserWidth,
-            // backgroundColor: 'red',
-            // zIndex: 3
+            backgroundColor: 'rgba(255, 255, 255, 0.5)',
+            zIndex: 3
         },
         gameUserTouchable: {
             // backgroundColor: 'transparent',
             // backgroundColor: 'green',
             width: gameUserWidth,
             height: gameUserWidth,
-            // zIndex: 3
+            zIndex: 3
         },
 
         mapItem: {

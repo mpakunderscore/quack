@@ -9,6 +9,7 @@ import {Menu} from './js/view/menu';
 import {menu} from './js/view/menu';
 
 import {Modal} from './js/view/modal';
+import {modal} from './js/view/modal';
 
 import {styles} from './js/styles/styles';
 
@@ -30,22 +31,11 @@ export class Index extends Component {
 }
 
 export function play() {
-
     menu.play();
-    // map.play();
 }
 
 export function main() {
-
     menu.main();
-    // map.main();
 }
-
-menu.setImage = (image) => {
-    this.setState({
-        image: image
-    });
-};
-
 
 

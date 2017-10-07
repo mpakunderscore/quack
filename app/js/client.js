@@ -19,8 +19,8 @@ import SocketIOClient from 'socket.io-client';
 
 const port = 3000;
 
-// const ip = 'wss://' + 'duck.city';
-const ip = 'http://92.61.69.168:' + port;
+const ip = 'wss://' + 'duck.city';
+// const ip = 'http://92.61.69.168:' + port;
 
 let socket = SocketIOClient(ip);
 
@@ -28,13 +28,18 @@ export let sendText = function (text) {
     socket.emit('text', text);
 };
 
-export let sendLocation = function (region) {
+//TODO move to actions
+export let sendLocation = function (user) {
 
-    region.name = menu.name;
-    region.back = 'day';
-    region.debug = 'true';
+    user.name = menu.name;
+    user.back = 'day';
+    user.debug = 'true';
 
-    socket.emit('location', JSON.stringify(region));
+    user.title = 'some user';
+    user.debug = 'true';
+
+    //TODO rename on server
+    socket.emit('location', JSON.stringify(user));
 };
 
 export let sendImage = function (name) {
