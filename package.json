@@ -10,7 +10,6 @@
 		"react": "15.4.2",
 		"react-native": "0.42.3",
 		"react-native-maps": "0.13.1",
-		"react-native-sound": "0.9.1",
 		"react-native-swiper": "1.5.4",
 		"socket.io-client": "1.7.3"
 	},
