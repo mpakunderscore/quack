@@ -18,7 +18,7 @@ export class Modal extends Component {
             marker: {}
         };
 
-        modal.show = (marker) => {
+        modal.show = (marker, editable) => {
             this.setState({
                 marker: marker
             });
@@ -40,17 +40,16 @@ export class Modal extends Component {
 
             <View style={this.state.style}>
 
-                <Text style={styles.modalHead}>
-                    {"This is duck"}
-                </Text>
-
-                <Text style={styles.modalText}>
+                <Text style={styles.modalTitle}>
                     {this.state.marker.title}
                 </Text>
 
                 <Text style={styles.modalText}>
                     {this.state.marker.description}
                 </Text>
+
+                <TextInput editable = {true}
+                           maxLength = {40}/>
 
                 <Buttons/>
 
@@ -65,7 +64,7 @@ class Buttons extends Component {
             <View style={styles.modalButtons}>
 
                 <TouchableOpacity onPress={closeModal}>
-                    <Text style={styles.modalText}>
+                    <Text style={styles.anyText}>
                         Close
                     </Text>
                 </TouchableOpacity>

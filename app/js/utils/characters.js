@@ -34,14 +34,14 @@ export const characters = [
     //     height: 220,
     //     text: "Death"
     // },
-    // {
-    //     id: "spacy",
-    //     image: images.spacy,
-    //     name: "spacy",
-    //     width: 220,
-    //     height: 220,
-    //     text: "Quests"
-    // },
+    {
+        id: "new",
+        image: images.spacy,
+        name: "spacy",
+        width: 340,
+        height: 340,
+        text: "New point"
+    },
     // {
     //     id: "sir",
     //     image: images.sir,

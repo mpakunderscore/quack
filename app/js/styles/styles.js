@@ -4,6 +4,8 @@ let { height, width } = Dimensions.get('window');
 
 let font = 'OpenSans-Light';
 let fontSize = 30;
+// let modalFontSize = 25;
+let modalFontSize = PixelRatio.getPixelSizeForLayoutSize(12);
 
 //TODO %
 export let gameUserWidth = 80;
@@ -32,17 +34,30 @@ export const styles = StyleSheet.create({
 
         backgroundColor: 'white',
         opacity: 1.0,
+
+        // margin: 50
     },
 
-    modalHead: {
-        fontSize: 30,
+    modalTitle: {
+        fontFamily: font,
+        fontSize: modalFontSize,
+        textAlign: 'center',
+        backgroundColor: 'transparent',
+
+        fontWeight: '400',
+        padding: 25,
+        // margin: 50
     },
+
 
     modalText: {
-        fontSize: 25,
-        // backgroundColor: 'transparent',
         fontFamily: font,
-        // margin: 50
+        fontSize: modalFontSize,
+        textAlign: 'center',
+        backgroundColor: 'transparent',
+
+        // fontWeight: '400',
+        padding: 25,
     },
     modalButtons: {
 
@@ -93,20 +108,23 @@ export const styles = StyleSheet.create({
             position: 'absolute',
             justifyContent: 'center',
             backgroundColor: 'transparent',
-            fontSize: PixelRatio.getPixelSizeForLayoutSize(12),
+            fontSize: modalFontSize,
             textAlign: 'center',
             margin: 50
         },
-        select: {
+
+        anyText: {
             fontFamily: font,
+            fontSize: fontSize,
+            textAlign: 'center',
+            // justifyContent: 'center',
+            backgroundColor: 'transparent',
+        },
+        select: {
             position: 'absolute',
             right: 0,
             left: 0,
             bottom: 50,
-            justifyContent: 'center',
-            backgroundColor: 'transparent',
-            fontSize: fontSize,
-            textAlign: 'center',
             // margin: 50
         },
 
@@ -145,7 +163,7 @@ export const styles = StyleSheet.create({
             // position: 'absolute',
             width: gameUserWidth,
             height: gameUserWidth,
-            backgroundColor: 'rgba(255, 255, 255, 0.5)',
+            // backgroundColor: 'rgba(255, 255, 255, 0.5)',
             zIndex: 3
         },
         gameUserTouchable: {

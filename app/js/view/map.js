@@ -14,28 +14,24 @@ import {sendLocation} from '../client';
 
 import {menu} from './menu';
 
-//'59.9547';
-//'30.3275';
 
-// let delta = 0.005;
-// let delta = 0.05;
-// let delta = 3;
-
-export let map = {};
-// map.region = {
-//     latitude: 0,
-//     longitude: 0,
-//     latitudeDelta: delta,
-//     longitudeDelta: delta
-// };
 
 const screen = Dimensions.get('window');
 
 const ASPECT_RATIO = screen.width / screen.height;
-let LATITUDE = 59.9547;
-let LONGITUDE = 30.3275;
-const LATITUDE_DELTA = 0.005;
-const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+let LATITUDE = 0;
+let LONGITUDE = 0;
+let LATITUDE_DELTA = 0.005;
+let LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+
+
+export let map = {};
+map.region = {
+    latitude: 0,
+    longitude: 0,
+    latitudeDelta: LATITUDE_DELTA,
+    longitudeDelta: LONGITUDE_DELTA
+};
 
 
 export class Map extends Component {
@@ -124,8 +120,8 @@ export class Map extends Component {
         const region = {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
-            latitudeDelta: LATITUDE_DELTA,
-            longitudeDelta: LONGITUDE_DELTA
+            latitudeDelta: map.region.latitudeDelta,
+            longitudeDelta: map.region.longitudeDelta
         };
 
         // let current = map.region;
@@ -136,22 +132,26 @@ export class Map extends Component {
 
         sendLocation(region);
 
-        //slow move view to duck
-        this.slowChangeRegion(region);
-
-        // this.setState({region: region});
+        this.setState({region: region});
 
         //TODO
         map.setUser({id: "self", region: region, name: menu.name});
 
         //save duck region
-        // map.region = JSON.parse(JSON.stringify(region));
+        map.region = JSON.parse(JSON.stringify(region));
+
+        //slow move view to duck
+        this.slowChangeRegion(region);
     }
 
     //on user move
     onRegionChange(region) {
 
-        // this.setState({region: region});
+        map.region.latitudeDelta = region.latitudeDelta;
+
+        map.region.longitudeDelta = region.longitudeDelta;
+
+        this.setState({region: region});
 
         this.slowChangeRegion(region)
     }
@@ -165,7 +165,22 @@ export class Map extends Component {
         // LATITUDE = region.latitude;
         // LONGITUDE = region.longitude;
 
-        this.setState({region: region});
+        // map.region.latitudeDelta = ;
+        // map.region.longitudeDelta = region.longitudeDelta;
+
+        // region.longitude = map.region.longitude;
+        // region.latitude = map.region.latitude;
+
+        let moveBack = {
+            longitude: map.region.longitude,
+            latitude: map.region.latitude,
+            latitudeDelta: region.latitudeDelta,
+            longitudeDelta: region.longitudeDelta
+        };
+
+        // this.setState({region: region});
+
+        // timer here and set moveBack
     }
 
     render() {

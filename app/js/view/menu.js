@@ -6,21 +6,23 @@ import Swiper from 'react-native-swiper';
 import {styles} from '../styles/styles';
 import {texts} from '../utils/texts';
 
-import {selfClick} from '../actions';
+// import {selfClick} from '../actions';
 import {selectClick} from '../actions';
-import {mainMenu} from '../actions';
+
+import {playSound} from '../actions';
 // import {zoom} from '../actions';
 import {characters} from '../utils/characters';
 
 export let menu = {};
 
+//current icon in map and menu index
 menu.name = 'goose';
 menu.index = 1;
 
 //TODO
 export let user = {
-    title: "Your title",
-    description: "And some description"
+    title: "Place your name here",
+    description: "And some text below, so if someone click on your icon - this text will shows up"
 };
 
 
@@ -113,9 +115,11 @@ export class MainMenu extends Component {
                                 {character.data}
                             </Text>
 
-                            <Text style={styles.select}>
-                                {character.text}
-                            </Text>
+                            <TouchableOpacity style={styles.select} onPress={playSound}>
+                                <Text style={styles.anyText}>
+                                    {character.text}
+                                </Text>
+                            </TouchableOpacity>
 
                         </View>
 

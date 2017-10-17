@@ -31,10 +31,16 @@ export const selectClick = (id, name, image, index) => {
 
         // menu.modal(true);
 
-        modal.show(user);
+        modal.show(user, true);
 
         // play();
         // sendImage(name);
+
+    } else if (id === "new") {
+
+        let init = {title: "Click and add title", description: "And some description if you want. This one will be static duck on map."};
+
+        modal.show(init, true);
 
     } else {
 
@@ -56,7 +62,7 @@ export const markClick = (marker) => {
 
     } else {
 
-        modal.show(marker);
+        modal.show(marker, false);
     }
 
 
