@@ -6,68 +6,14 @@ npm start --reset-cache
 2. Delete the `node_modules` folder: `rm -rf node_modules && npm install`.
 3. Reset packager cache: `rm -fr $TMPDIR/react-*` or `npm start --reset-cache`.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Press Start 2P
-
-
-
-7. Дублируется отправление локаций с телефонов
-
-
-
 adb devices
 react-native run-android
-export PATH="/Users/pavelkuzmin/Library/Android/sdk/platform-tools":$PATH
+export PATH="/Users/username/Library/Android/sdk/platform-tools":$PATH
 
 
-/Users/pavelkuzmin/Library/Android/sdk/tools/android
-
+/Users/username/Library/Android/sdk/tools/android
 
 
 react-native bundle --dev false --platform android --entry-file index.android.js --bundle-output ./android/app/build/intermediates/assets/debug/index.android.bundle --assets-dest ./android/app/build/intermediates/res/merged/debug
 cd android/
 ./gradlew assembleDebug
-
-
-
-делать привязку в первую очередь к карте?
-
-квакать
-писать текст с произношением роботом
-перевести биткоинов (кваккоинов?)
-показать направление
-открыть чат уточки
-подружиться с другой уточкой
-открыть текст с описанием всего этого и донатом
-оставить послание на карте
-оставить яйцо на карте
-прочитать историю
-персональная уточка за деньги
-оставить персональную точку на карте и выбрать картинку метку подпись
-слушать радио
-говорить и слушать
-
-подбирать через опрос людей на карте
-
-
-сортировать уточек в зависимости от частоты использования
-
-
-
-радиус дейсвтия кряка
-друзья
-покрякать с нотификациями кто из друзей вокруг
-кто-от из ваших друзей крякнул недалеко
