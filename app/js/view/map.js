@@ -147,8 +147,14 @@ export class Map extends Component {
     //on user move
     onRegionChange(region) {
 
-        map.region.latitudeDelta = region.latitudeDelta;
+        if (region.latitudeDelta > 0.1) {
 
+        }
+
+        region.latitudeDelta = LATITUDE_DELTA;
+        region.longitudeDelta = LONGITUDE_DELTA;
+
+        map.region.latitudeDelta = region.latitudeDelta;
         map.region.longitudeDelta = region.longitudeDelta;
 
         this.setState({region: region});
@@ -196,7 +202,7 @@ export class Map extends Component {
                 >
                     {this.state.markers.map(marker => (
 
-                        <MapView.Marker
+                        <MapView.Marker.Animated
                             coordinate={marker.region}
                             key={marker.id}
                             style={styles.gameUserMarker}
@@ -210,7 +216,7 @@ export class Map extends Component {
 
                             </TouchableOpacity>
 
-                        </MapView.Marker>
+                        </MapView.Marker.Animated>
 
                     ))}
 
@@ -222,6 +228,11 @@ export class Map extends Component {
 }
 
 export function placeUser(user) {
+
+    // this.state.coordinate.timing({
+    //     ...nextProps.coordinate,
+    //     duration: 500
+    // }).start();
 
     user.region = {
         latitude: user.latitude,
