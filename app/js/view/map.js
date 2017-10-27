@@ -40,6 +40,11 @@ export class Map extends Component {
 
         super(props);
 
+
+        map.moveCenter = () => {
+            this.setState({region: map.region})
+        };
+
         map.setUser = (user) => {
 
             let markers = this.getMarkers();
@@ -93,6 +98,9 @@ export class Map extends Component {
         this.getRegion = this.getRegion.bind(this);
         this.getMarkers = this.getMarkers.bind(this);
         this.onRegionChange = this.onRegionChange.bind(this);
+        this.slowChangeRegion = this.slowChangeRegion.bind(this);
+
+        navigator.geolocation.getCurrentPosition(this.slowChangeRegion, (error) => {}, {});
 
         navigator.geolocation.watchPosition(this.setLocation, (error) => {
 
@@ -102,8 +110,8 @@ export class Map extends Component {
             timeout: 15000,
             maximumAge: 15000,
             distanceFilter: 10,
-            useSignificantChanges: false}
-        );
+            useSignificantChanges: false
+        });
     }
 
     getRegion() {
@@ -114,7 +122,7 @@ export class Map extends Component {
         return this.state.markers;
     }
 
-    //on gps move, duck position
+    //gps move - duck move
     setLocation(position) {
 
         const region = {
@@ -132,7 +140,7 @@ export class Map extends Component {
 
         sendLocation(region);
 
-        this.setState({region: region});
+        // this.setState({region: region});
 
         //TODO
         map.setUser({id: "self", region: region, name: menu.name});
@@ -141,41 +149,27 @@ export class Map extends Component {
         map.region = JSON.parse(JSON.stringify(region));
 
         //slow move view to duck
-        this.slowChangeRegion(region);
+        // this.slowChangeRegion(region);
     }
 
-    //on user move
+    //map move - center view move
     onRegionChange(region) {
 
-        if (region.latitudeDelta > 0.1) {
+        this.setState({region: region});
+    }
 
-        }
+    //init view and duck position + center button
+    slowChangeRegion(region) {
+
 
         region.latitudeDelta = LATITUDE_DELTA;
         region.longitudeDelta = LONGITUDE_DELTA;
 
-        map.region.latitudeDelta = region.latitudeDelta;
-        map.region.longitudeDelta = region.longitudeDelta;
-
-        this.setState({region: region});
-
-        this.slowChangeRegion(region)
-    }
-
-    slowChangeRegion(region) {
-
-        // console.log(map.region.latitude - region.latitude);
-
-        // moveToCenter();
-
-        // LATITUDE = region.latitude;
-        // LONGITUDE = region.longitude;
-
         // map.region.latitudeDelta = ;
         // map.region.longitudeDelta = region.longitudeDelta;
 
-        // region.longitude = map.region.longitude;
-        // region.latitude = map.region.latitude;
+        region.longitude = map.region.longitude;
+        region.latitude = map.region.latitude;
 
         let moveBack = {
             longitude: map.region.longitude,
@@ -184,7 +178,7 @@ export class Map extends Component {
             longitudeDelta: region.longitudeDelta
         };
 
-        // this.setState({region: region});
+        this.setState({region: region});
 
         // timer here and set moveBack
     }
@@ -225,6 +219,10 @@ export class Map extends Component {
             </View>
         );
     }
+}
+
+export function centerMap() {
+    map.moveCenter();
 }
 
 export function placeUser(user) {

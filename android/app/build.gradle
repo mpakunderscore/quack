@@ -89,7 +89,7 @@ android {
     defaultConfig {
         applicationId "com.forest.network.quack"
         minSdkVersion 17
-        targetSdkVersion 22
+        targetSdkVersion 25
         versionCode 3
         versionName "0.3"
         ndk {
@@ -126,6 +126,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-sound')
     compile project(':react-native-maps')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:24.0.0"

@@ -8,7 +8,7 @@ let fontSize = 30;
 let modalFontSize = PixelRatio.getPixelSizeForLayoutSize(12);
 
 //TODO %
-export let gameUserWidth = 80;
+export let gameUserWidth = 50;
 
 export const styles = StyleSheet.create({
 
@@ -138,13 +138,13 @@ export const styles = StyleSheet.create({
         gameMenu: {
             // flex: 1,
             position: 'absolute',
-            left: 0,
-            right: 0,
-            top: 0,
-            bottom: 0,
+            left: 10,
+            right: 10,
+            // top: 0,
+            bottom: 10,
 
-            flexDirection: 'column',
-            justifyContent: 'center',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
             alignItems: 'center',
 
             // backgroundColor: 'rgba(255, 255, 255, 0.5)',
@@ -152,6 +152,10 @@ export const styles = StyleSheet.create({
             // opacity: 0.5,
 
             // zIndex: 2,
+        },
+        gameMenuText: {
+            fontSize: fontSize/1.5,
+            backgroundColor: 'transparent',
         },
 
         gameUserMarker: {

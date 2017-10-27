@@ -7,11 +7,12 @@ import {styles} from '../styles/styles';
 import {texts} from '../utils/texts';
 
 // import {selfClick} from '../actions';
-import {selectClick} from '../actions';
+import {mainMenu, selectClick} from '../actions';
 
 import {playSound} from '../actions';
 // import {zoom} from '../actions';
 import {characters} from '../utils/characters';
+import {centerMap} from './map';
 
 export let menu = {};
 
@@ -178,26 +179,31 @@ export class GameMenu extends Component {
 
     render() {
         return (
-            <View style={styles.gameMenu}
-                  pointerEvents={'none'}
-                  // onResponderMove={this.onMove}
-                  // onResponderRelease={this.onRelease}
-                  // onStartShouldSetResponder={this._onStartShouldSetResponder}
-                  // onMoveShouldSetResponder={this._onMoveShouldSetResponder}
-                >
+            <View style={styles.gameMenu}>
 
-                {/*<TouchableOpacity*/}
-                    {/*onPress={selfClick}*/}
-                    {/*onLongPress={mainMenu}*/}
-                    {/*// pointerEvents={'all'}*/}
-                    {/*style={styles.gameUserTouchable}>*/}
+                <TouchableOpacity pointerEvents={'auto'} onPress={centerMap}>
+                    <Text style={styles.gameMenuText}>
+                        Center
+                    </Text>
+                </TouchableOpacity>
 
-                    {/*<Image*/}
-                        {/*style={styles.gameUser}*/}
-                        {/*source={this.state.image}*/}
-                    {/*/>*/}
+                <TouchableOpacity pointerEvents={'auto'} onPress={playSound}>
+                    <Text style={styles.gameMenuText}>
+                        Quack
+                    </Text>
+                </TouchableOpacity>
 
-                {/*</TouchableOpacity>*/}
+                <TouchableOpacity pointerEvents={'auto'} onPress={mainMenu}>
+                    <Text style={styles.gameMenuText}>
+                        Menu
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity pointerEvents={'auto'} onPress={mainMenu}>
+                    <Text style={styles.gameMenuText}>
+                        Select
+                    </Text>
+                </TouchableOpacity>
 
             </View>
         );

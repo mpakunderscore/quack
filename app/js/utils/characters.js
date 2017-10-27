@@ -1,5 +1,9 @@
 import {images} from './images';
 
+import {} from '../actions';
+
+let width = 300;
+
 export const characters = [
     {
         id: "text",
@@ -14,17 +18,17 @@ export const characters = [
         id: "quack",
         image: images.goose,
         name: "goose",
-        width: 340,
-        height: 340,
+        width: width,
+        height: width,
         text: "Quack"
     },
     {
-        id: "settings",
+        id: "cyber",
         image: images.cyber,
         name: "cyber",
-        width: 340,
-        height: 340,
-        text: "Settings"
+        width: width,
+        height: width,
+        text: "Cyber"
     },
     // {
     //     id: "death",
@@ -35,12 +39,12 @@ export const characters = [
     //     text: "Death"
     // },
     {
-        id: "new",
+        id: "spacy",
         image: images.spacy,
         name: "spacy",
-        width: 340,
-        height: 340,
-        text: "New point"
+        width: width,
+        height: width,
+        text: "Spacy"
     },
     // {
     //     id: "sir",

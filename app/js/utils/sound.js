@@ -1,25 +1,23 @@
 import {Alert} from 'react-native';
 
-// let Sound = require('react-native-sound');
-
-// const quack = require('quack.mp3');
+let Sound = require('react-native-sound');
 
 // Enable playback in silence mode (iOS only)
 // Sound.setCategory('Playback');
 
 // Load the sound file 'whoosh.mp3' from the app bundle
 // See notes below about preloading sounds within initialization code below.
-// export let sound = new Sound('quack.mp3', Sound.MAIN_BUNDLE, (error) => {
-//
-//     if (error) {
-//         // Alert.alert('failed to load the sound');
-//         console.log('failed to load the sound', error);
-//         return;
-//     }
-//
-//     // loaded successfully
-//     console.log('duration in seconds: ' + sound.getDuration() + 'number of channels: ' + sound.getNumberOfChannels());
-// });
+export let sound = new Sound('quack.mp3', Sound.MAIN_BUNDLE, (error) => {
+
+    if (error) {
+        // Alert.alert('failed to load the sound');
+        console.log('failed to load the sound', error);
+        return;
+    }
+
+    // loaded successfully
+    console.log('duration in seconds: ' + sound.getDuration() + 'number of channels: ' + sound.getNumberOfChannels());
+});
 
 // Reduce the volume by half
 // sound.setVolume(1.0);
